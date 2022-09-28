@@ -1,6 +1,5 @@
 const axios = require('axios');
 
-
 exports.getCapbilities = async () => {
     let Capabilities = []
     try{
