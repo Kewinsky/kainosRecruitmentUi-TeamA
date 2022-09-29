@@ -1,8 +1,8 @@
 const axios = require('axios');
 
-exports.getJobRole = async () => { 
+exports.getJobRole = async (id) => { 
       try {  
-        const jobRoleResponse = await axios.get('http://localhost:8080/api/job-specification/1')
+        const jobRoleResponse = await axios.get('http://localhost:8080/api/job-specification/' + id)
         console.log(jobRoleResponse.data)
         return jobRoleResponse.data;
       } catch (e) {

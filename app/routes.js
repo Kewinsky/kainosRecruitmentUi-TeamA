@@ -10,8 +10,8 @@ router.get('/view-capabilities', async (req, res) => {
     capabilities: result
     })});
 
-router.get('/job-specification', async (req, res) => {
-    var result = await interface.getJobRole()
+router.get('/job-specification/:id', async (req, res) => {
+    var result = await interface.getJobRole(req.params.id)
     res.render('job-specification.html', {
         jobRole: result
     })});
