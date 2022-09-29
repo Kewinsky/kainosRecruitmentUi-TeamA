@@ -2,8 +2,6 @@ const express = require('express')
 const router = express.Router()
 const interface = require('./interface.js')
 const capability = require('./interface.js')
-//const viewBandLevel = require('./kainosBandLevel.js')
-
 const job_role = require('./interface.js')
 
 
