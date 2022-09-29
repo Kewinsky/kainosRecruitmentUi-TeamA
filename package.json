@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node start",
     "build": "node lib/build/generate-assets",
+    "test": "mocha test/unit/**/*.js",
     "serve": "node listen-on-port"
   },
   "dependencies": {
@@ -44,5 +45,22 @@
     "sync-request": "^6.0.0",
     "universal-analytics": "^0.5.3",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@wdio/local-runner": "^7.19.0",
+    "@wdio/mocha-framework": "^7.19.0",
+    "axios-mock-adapter": "^1.20.0",
+    "chai": "^4.3.6",
+    "chromedriver": "^105.0.0",
+    "glob": "^7.1.4",
+    "gulp-webdriver": "^4.0.0",
+    "jest": "^25.2.7",
+    "mocha": "^9.2.2",
+    "selenium-standalone": "^8.0.10",
+    "selenium-webdriver": "^4.1.1",
+    "standard": "^14.3.3",
+    "supertest": "^4.0.2",
+    "ts-node": "^10.7.0",
+    "webdriverio": "^7.19.0"
   }
 }
