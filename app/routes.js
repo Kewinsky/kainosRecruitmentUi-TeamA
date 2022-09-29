@@ -2,7 +2,10 @@ const express = require('express')
 const router = express.Router()
 const interface = require('./interface.js')
 const capability = require('./interface.js')
-const viewBandLevel = require('./kainosBandLevel.js')
+//const viewBandLevel = require('./kainosBandLevel.js')
+
+const job_role = require('./interface.js')
+
 
 router.get('/view-capabilities', async (req, res) => {
     var result = await capability.getCapbilities()
@@ -10,10 +13,25 @@ router.get('/view-capabilities', async (req, res) => {
     capabilities: result
     })});
 
+
  router.get('/viewBandLevel', async (req, res) => {
      response = await viewBandLevel.viewBandLevel()
      console.log(response);
      res.render('viewBandLevel', {bandLevel:response } );
    });
+
+
+router.get('/job-specification/:id', async (req, res) => {
+    var result = await interface.getJobRole(req.params.id)
+    res.render('job-specification.html', {
+        jobRole: result
+    })});
+    
+router.get('/view-jobRoles', async (req, res) => {
+    var result = await job_role.getJobRoles()
+    res.render('view-jobRoles', {
+    job_roles: result
+    })});
+    
 
 module.exports = router
