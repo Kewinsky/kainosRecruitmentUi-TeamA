@@ -1,0 +1,31 @@
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            Kainos Employee System
+            <span class="govuk-caption-xl">Job Roles Report</span>
+        </h1>{{releaseVersion | log }}
+        <p>
+            Please see below for the list of job Roles
+        </p>
+
+        {% set caprows = [] %}
+        {% for job_role in job_roles %}
+        {% set caprows = (caprows.push([{text: job_role.roleName}]), caprows) %}
+        {% endfor %}
+        {{govukTable({
+        head: [ { text: "Job Roles" }],
+        rows: caprows })
+        }}
+
+    </div>
+</div>
+
+{% endblock %}
