@@ -22,24 +22,14 @@ Home – GOV.UK Prototype Kit
             Please see below for the list of job Roles
         </p>
 
-        <!-- {% set caprows = [] %}
-        {% for job_role in job_roles %}
-        {% set caprows = (caprows.push([{text: job_role.roleName}]), caprows) %}
-        {% endfor %} -->
-        
-        <!-- {{govukTable({
-        head: [ { text: "Job Roles" }],
-        rows: caprows })
-        }} -->
-
         <table class="govuk-table">
             <tbody class="govuk-table__body">
             <th scope="row" class="govuk-table__header">Job Roles</th>
-            {% for job_role in job_roles %}
+            {% for jobRole in jobRoles %}
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                    <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job_role.jobRoleId }}">
-                        {{ job_role.roleName }}
+                    <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ jobRole.jobRoleId }}">
+                        {{ jobRole.roleName }}
                     </a>
                 </td>
             </tr>
