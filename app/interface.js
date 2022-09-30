@@ -35,10 +35,11 @@ exports.getJobRoles = async () => {
 
     }
     catch(e) {
-        console.log(e);
-
+        if(e.response.status == 500){
+            return new Error('Could not get job specification')
+       }
+       return new Error('Error, job specification could not be returned')
     }
-    return("Could not return roles")
 }
 exports.viewBandLevel = async () => {
     const response = await axios.get('http://localhost:8080/api/viewBandLevel');
