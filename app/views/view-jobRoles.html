@@ -26,7 +26,7 @@ Job Roles – GOV.UK Prototype Kit
             <tbody class="govuk-table__body">
             <th scope="row" class="govuk-table__header">Job Roles</th>
             {% for jobRole in jobRoles %}
-            <tr class="govuk-table__row">
+            <tr class="govuk-table__row" id="{{ jobRole.jobRoleId }}">
                 <td class="govuk-table__cell">
                     <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ jobRole.jobRoleId }}">
                         {{ jobRole.roleName }}
