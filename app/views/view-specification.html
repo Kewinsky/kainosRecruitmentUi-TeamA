@@ -1,14 +1,10 @@
-{% extends "layout_unbranded.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
-Home – GOV.UK Prototype Kit
+Job Specification – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-
-{{ govukHeader({
-  homepageUrl: "#"
-}) }}
 
 {{ govukBackLink({
   text: "Back",
@@ -36,12 +32,10 @@ Home – GOV.UK Prototype Kit
         </table>
         <a href="{{ jobRole.link }}">
             <button class="govuk-button" data-module="govuk-button">
-                Click here! 
+                Open job profile
             </button>
         </a>
     </div>
 </div>
-
-{{ govukFooter({}) }}
 
 {% endblock %}
