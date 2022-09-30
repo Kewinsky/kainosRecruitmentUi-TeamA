@@ -6,7 +6,10 @@ exports.getJobRole = async (id) => {
         console.log(jobRoleResponse.data)
         return jobRoleResponse.data;
       } catch (e) {
-         return new Error('Could not get job role')
+        if(e.response.status == 500){
+            return new Error('Could not get job specification')
+       }
+       return new Error('Could not get job specification')
       }
   }
 
@@ -21,7 +24,6 @@ exports.getCapbilities = async () => {
     }
     catch(e) {
         console.log(e);
-
     }
     return("Could not return Capabilities")
 }
@@ -35,17 +37,9 @@ exports.getJobRoles = async () => {
 
     }
     catch(e) {
-        if(e.response.status == 500){
-            return new Error('Could not get job specification')
-       }
-       return new Error('Error, job specification could not be returned')
+        console.log(e);
     }
-}
-exports.viewBandLevel = async () => {
-    const response = await axios.get('http://localhost:8080/api/viewBandLevel');
-
-        console.log(response.data)
-        return response.data;
+    return("Could not return roles")
 }
 
 
