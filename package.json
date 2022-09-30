@@ -9,14 +9,18 @@
   "scripts": {
     "start": "node start",
     "build": "node lib/build/generate-assets",
-    "serve": "node listen-on-port"
+    "serve": "node listen-on-port",
+    "test": "mocha test/unit/**/*.js",
+    "test-ui": "gulp --gulpfile gulpfile-ui.js ui"
   },
   "dependencies": {
     "@govuk-prototype-kit/step-by-step": "^2.0.0",
     "acorn": "^8.5.0",
     "ansi-colors": "^4.1.1",
+    "axios-mock-adapter": "^1.21.2",
     "body-parser": "^1.14.1",
     "browser-sync": "^2.27.10",
+    "chai": "^4.3.6",
     "chokidar": "^3.5.3",
     "client-sessions": "^0.8.0",
     "cookie-parser": "^1.4.6",
