@@ -5,7 +5,7 @@ axios.defaults.baseURL = process.env.API_URL;
 URL = '/api/job-roles/'
 
 module.exports.getJobRoles = async function () {
-    try{
+    try {
         const response = await axios.get(URL)
         return response.data
     }catch(e){
@@ -18,6 +18,5 @@ module.exports.getJobRoles = async function () {
         else if(e.response.status === 404){
             throw new Error("Bad request")
         }
-
     }
 }
