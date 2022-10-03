@@ -1,32 +1,28 @@
-{% extends "layout_unbranded.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
-Home – GOV.UK Prototype Kit
+Job Roles – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
+
+{{ govukBackLink({
+    text: "Back",
+    href: "http://localhost:3000/index"
+  }) }}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
             Kainos Employee System
-            <span class="govuk-caption-xl">Job Roles Report</span>
+            <span id="jobRolesTitle" class="govuk-caption-xl">Job Roles Report</span>
         </h1>{{releaseVersion | log }}
-
-        {{ govukBackLink({
-            text: "Back",
-            href: "http://localhost:3000/index"
-          }) }}
-
-        <p>
-            Please see below for the list of job Roles
-        </p>
-
+        <p>Please see below for the list of job Roles</p>
         <table class="govuk-table">
             <tbody class="govuk-table__body">
             <th scope="row" class="govuk-table__header">Job Roles</th>
             {% for jobRole in jobRoles %}
-            <tr class="govuk-table__row">
+            <tr class="govuk-table__row" id="jobSpecRoleID-{{ jobRole.jobRoleId }}">
                 <td class="govuk-table__cell">
                     <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ jobRole.jobRoleId }}">
                         {{ jobRole.roleName }}
