@@ -25,7 +25,8 @@ describe('interface',function(){
 
                 var error = await interface.viewBandLevel();
 
-                expect(error.message).to.equal('Could not get roles and band levels')
+
+                expect(error.message).to.equal('Could not get band')
               })
     })
 })
