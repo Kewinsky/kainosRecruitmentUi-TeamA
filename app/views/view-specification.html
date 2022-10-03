@@ -1,14 +1,10 @@
-{% extends "layout_unbranded.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
-Home – GOV.UK Prototype Kit
+Job Specification – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-
-{{ govukHeader({
-  homepageUrl: "#"
-}) }}
 
 {{ govukBackLink({
   text: "Back",
@@ -19,29 +15,27 @@ Home – GOV.UK Prototype Kit
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
             Kainos Employee System
-            <span class="govuk-caption-xl">Job Role Details</span>
+            <span id="jobSpecificationTitle" class="govuk-caption-xl">Job Specification</span>
         </h1>{{releaseVersion | log }}
         
         <table class="govuk-table">
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Job Role Name</th>
-                <td class="govuk-table__cell">{{ jobRole.roleName }}</td>
+                <td id="jobRoleName" class="govuk-table__cell">{{ jobRole.roleName }}</td>
               </tr>
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Specification</th>
-                <td class="govuk-table__cell">{{ jobRole.specification }}</td>
+                <td id="specTextId" class="govuk-table__cell">{{ jobRole.specification }}</td>
               </tr>
             </tbody>
         </table>
         <a href="{{ jobRole.link }}">
-            <button class="govuk-button" data-module="govuk-button">
-                Click here! 
+            <button id="jobSpecBtn" class="govuk-button" data-module="govuk-button">
+                Open job profile
             </button>
         </a>
     </div>
 </div>
-
-{{ govukFooter({}) }}
 
 {% endblock %}
