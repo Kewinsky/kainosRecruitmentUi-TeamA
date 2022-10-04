@@ -17,7 +17,6 @@ router.get('/view-capabilities', async (req, res) => {
      res.render('viewBandLevel', {bandLevel:response } );
    });
 
-
 router.get('/job-specification/:id', async (req, res) => {
     var result = await interface.getJobRole(req.params.id)
     res.render('view-specification.html', {
@@ -29,6 +28,5 @@ router.get('/view-jobRoles', async (req, res) => {
     res.render('view-jobRoles', {
         jobRoles: result
     })});
-    
 
 module.exports = router
