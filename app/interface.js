@@ -1,5 +1,6 @@
 const axios = require('axios');
-
+const bandLevel = require('./config');
+var BANDLEVEL = process.env.BAND_LEVEL
 exports.getJobRole = async (id) => { 
       try {  
         const jobRoleResponse = await axios.get('http://localhost:8080/api/job-specification/' + id)
@@ -50,7 +51,7 @@ exports.getJobRoles = async () => {
 }
 exports.viewBandLevel = async () => {
     try{
-        const response = await axios.get('http://localhost:8080/api/viewBandLevel');
+        const response = await axios.get(BANDLEVEL);
         console.log(response.data)
         return response.data;
 

@@ -1,7 +1,8 @@
 // Use this file to change prototype configuration.
 
 // Note: prototype config can be overridden using environment variables (eg on heroku)
-
+const dotenv = require('dotenv')
+dotenv.config();
 module.exports = {
   // Service name used in header. Eg: 'Renew your passport'
   serviceName: 'Kainos Employee System',
@@ -26,6 +27,9 @@ module.exports = {
   useHttps: 'true',
 
   // Enable or disable Browser Sync (local development only)
-  useBrowserSync: 'true'
+  useBrowserSync: 'true',
+
+  bandLevel: process.env.BAND_LEVEL
+
 
 }
