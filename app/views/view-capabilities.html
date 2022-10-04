@@ -23,11 +23,11 @@ Job Roles – GOV.UK Prototype Kit
             <th scope="row" class="govuk-table__header">Job Roles</th>
             <th scope="row" class="govuk-table__header">Capability</th>
             {% for capability in capabilities %}
-            <tr class="govuk-table__row" id="capability">
-                <td class="govuk-table__cell" id={{ capability.roleName }}>
+            <tr class="govuk-table__row" id="{{ capability.roleName }}-{{ capability.capabilityName }}">
+                <td class="govuk-table__cell" id="{{ capability.roleName }}">
                     {{ capability.roleName }}
                 </td>
-                <td class="govuk-table__cell" id={{ capability.capabilityName }}>
+                <td class="govuk-table__cell" id="{{ capability.capabilityName }}">
                     {{ capability.capabilityName }}
                 </td>
             </tr>
