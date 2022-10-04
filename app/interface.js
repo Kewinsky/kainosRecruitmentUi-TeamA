@@ -29,7 +29,7 @@ exports.getCapbilities = async () => {
     }
     catch(e) {
         console.log(e);
-
+         return new Error('Could not return Capabilities')
     }
     return("Could not return Capabilities")
 }
