@@ -29,10 +29,9 @@ exports.getCapbilities = async () => {
 
     }
     catch(e) {
+        return new Error('Could not return Capabilities')
         console.log(e);
-
     }
-    return("Could not return Capabilities")
 }
 exports.getJobRoles = async () => {
     let job_roles = []

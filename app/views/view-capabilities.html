@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Home – GOV.UK Prototype Kit
+Job Roles – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% block beforeContent %}
@@ -10,25 +14,30 @@ Home – GOV.UK Prototype Kit
 
 {% block content %}
 
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
             Kainos Employee System
-            <span class="govuk-caption-xl">Capability Report</span>
+            <span id="jobRolesTitle" class="govuk-caption-xl">Capability Report</span>
         </h1>{{releaseVersion | log }}
-        <p>
-            Please see below for the list of employees
-        </p>
-
-        {% set caprows = [] %}
-        {% for capability in capabilities %}
-        {% set caprows = (caprows.push([{text: capability.roleName}, {text: capability.capabilityName}]), caprows) %}
-        {% endfor %}
-        {{govukTable({
-        head: [ { text: "Job Role" },{ text: "Capability" }],
-        rows: caprows })
-        }}
-
+        <p>Please see below for the list of Capabilities</p>
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+            <th scope="row" class="govuk-table__header">Job Roles</th>
+            <th scope="row" class="govuk-table__header">Capability</th>
+            {% for capability in capabilities %}
+            <tr class="govuk-table__row" id="{{ capability.roleName }}-{{ capability.capabilityName }}">
+                <td class="govuk-table__cell" id="{{ capability.roleName }}">
+                    {{ capability.roleName }}
+                </td>
+                <td class="govuk-table__cell" id="{{ capability.capabilityName }}">
+                    {{ capability.capabilityName }}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 
