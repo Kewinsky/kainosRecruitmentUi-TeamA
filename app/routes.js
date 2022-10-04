@@ -18,5 +18,12 @@ router.get('/view-jobRoles', async (req, res) => {
         capabilities: results
     })});
     
+router.get('/band-information/:id', async (req, res) => {
+    var result = await interface.getTraining(req.params.id)
+    var response = await interface.getCompetencies(req.params.id)
+    res.render('view-band-info.html', {
+        training: result,
+        competencies: response
+    })});
 
 module.exports = router

@@ -60,6 +60,41 @@ exports.viewBandLevel = async () => {
          return new Error('Could not get band')
      }
 }
+exports.getTraining = async (id) => { 
+    try {  
+      const response = await axios.get(Url+"view-band-training/" + id)
+      console.log(response.data)
+      return response.data;
+    } catch (e) {
+      if(e.response === undefined){
+          throw new Error("Undefined error has occurred")
+      }
+      else if(e.response.status === 500){
+          throw new Error("An error occurred while executing this request")
+      }
+      else if(e.response.status === 404){
+          throw new Error("Bad request")
+      }
+    }
+}
+
+exports.getCompetencies = async (id) => { 
+    try {  
+      const response = await axios.get(Url+"viewCompetencies/" + id)
+      console.log(response.data)
+      return response.data;
+    } catch (e) {
+      if(e.response === undefined){
+          throw new Error("Undefined error has occurred")
+      }
+      else if(e.response.status === 500){
+          throw new Error("An error occurred while executing this request")
+      }
+      else if(e.response.status === 404){
+          throw new Error("Bad request")
+      }
+    }
+}
 
 
 
