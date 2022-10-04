@@ -48,5 +48,32 @@ exports.getJobRoles = async () => {
     return("Could not return roles")
 }
 
+exports.getBandLevelNames = async () => {
+    let BandLevels = []
 
+    try {
+        const viewBandLevel = await axios.get('http://localhost:8080/api/viewBandLevelNames')
+        console.log(viewBandLevel.data)
+        return viewBandLevel.data;
 
+    }
+    catch(e) {
+        console.log(e);
+    }
+    return("Could not return Band Levels")
+}
+
+exports.getCapabilitiesNames = async () => {
+    let BandLevels = []
+
+    try {
+        const viewBandLevel = await axios.get('http://localhost:8080/api/viewCapabilitiesNames')
+        console.log(viewBandLevel.data)
+        return viewBandLevel.data;
+
+    }
+    catch(e) {
+        console.log(e);
+    }
+    return("Could not return Band Levels")
+}

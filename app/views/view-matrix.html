@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Job Roles – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+{{ govukBackLink({
+    text: "Back",
+    href: "http://localhost:3000/index"
+  }) }}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            Kainos Employee System
+            <span id="jobRolesTitle" class="govuk-caption-xl">Job Roles Report</span>
+        </h1>{{releaseVersion | log }}
+        <p>Please see below for the list of job Roles</p>
+
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+            <th scope="row" class="govuk-table__header">Band Level</th>
+            {% for cap in capabilities %}
+                <th scope="row" class="govuk-table__header">{{ cap.capabilityName }}</th>
+            {% endfor %}
+
+            {% for band in bandLevels %}
+            <tr class="govuk-table__row">
+                <th class="govuk-table__cell">
+                    {{ band.bandName }}
+                </th>
+                
+                {% for job in jobRoles %}
+                    {% if job.capabilityID == 1 %}
+                        {% if job.bandID == band.bandID %}
+                            <td class="govuk-table__cell">
+                                <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
+                                {{ job.roleName }}
+                                 </a>
+                            </td>
+                            
+                        {% endif %}
+                    {% endif %}
+                    {% if job.capabilityID == 2 %}
+                        {% if job.bandID == band.bandID %}
+                            <td class="govuk-table__cell">
+                                <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
+                                {{ job.roleName }}
+                                </a>
+                            </td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+

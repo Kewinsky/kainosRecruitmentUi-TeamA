@@ -30,5 +30,15 @@ router.get('/view-jobRoles', async (req, res) => {
         jobRoles: result
     })});
     
+router.get('/view-matrix', async (req, res) => {
+    var jobs = await interface.getJobRoles()
+    var caps = await interface.getCapabilitiesNames()
+    var bands = await interface.getBandLevelNames()
+    console.log(jobs)
+    res.render('view-matrix', {
+        jobRoles: jobs,
+        capabilities: caps,
+        bandLevels: bands
+    })});
 
 module.exports = router
