@@ -16,21 +16,27 @@ Question page template – {{ serviceName }} – GOV.UK Prototype Kit
       Kainos Employee System
     </h1>
     {% set bandLevelRows = [] %}
-    {% for band in bandLevel %}
-    {% set bandLevelRows = (bandLevelRows.push([{ text: band.roleName }, {text: band.bandName}]), bandLevelRows) %}
-    {% endfor %}
-    {% from "govuk/components/table/macro.njk" import govukTable %}
-    {{ govukTable({
-    caption: "Band Level Report",
-    captionClasses: "govuk-table__caption--m",
-    firstCellIsHeader: true,
-    head: [
-    { text: "Role Name" },
-    { text: "Band Name" }
+    <table class="govuk-table">
+      <th scope="col" class="govuk-table__header">Job Roles</th>
+      <th scope="col" class="govuk-table__header">Band Level</th>
+      <tbody class="govuk-table__body">
+      <tr class="govuk-table__row" id="bandLevelID">
+        {% for band in bandLevel %}
+        <td class="govuk-table__cell">
+          <p class="gov_role_name" id = {{ band.roleName }}>
+            {{ band.roleName }}
+          </p>
+        </td>
+        <td class="govuk-table__cell">
+          <p class="gov_role_band" id = {{ band.bandName }}>
+            {{ band.bandName }}
+          </p>
 
-    ],
-    rows: bandLevelRows })
-    }}
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
   </div>
 </div>
 {% endblock %}
