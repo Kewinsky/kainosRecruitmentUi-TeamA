@@ -12,7 +12,7 @@ router.get('/view-capabilities', async (req, res) => {
 
 
  router.get('/viewBandLevel', async (req, res) => {
-     response = await viewBandLevel.viewBandLevel()
+     response = await interface.viewBandLevel()
      console.log(response);
      res.render('viewBandLevel', {bandLevel:response } );
    });
