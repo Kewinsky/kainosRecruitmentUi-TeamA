@@ -69,6 +69,6 @@ describe('UI Testing for Job Specification Webpage', () => {
        expect(await driver.findElement(By.linkText('Back')).click());
 
        // Close browser
-      await driver.quit();
+       await driver.quit();
   })
 })

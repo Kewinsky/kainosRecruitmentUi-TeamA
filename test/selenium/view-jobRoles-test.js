@@ -36,7 +36,7 @@ describe('UI Testing for Job Roles Webpage', () => {
        // Job roles webpage
        driver.get(jobRoleUrl);
 
-        // Compare expected title with actual title
+        // Compare expected title with actual title for the first entry
         expect(await driver.findElement(By.id('jobSpecRoleID-1')).getText()).to.equal('Data Analyst');
 
         // Close browser
