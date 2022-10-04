@@ -10,7 +10,7 @@
     "start": "node start",
     "build": "node lib/build/generate-assets",
     "serve": "node listen-on-port",
-    "test-ui": "mocha --timeout 15000 test/ui/*.js"
+    "test-ui": "mocha --timeout 15000 test/selenium/*.js"
   },
   "dependencies": {
     "@govuk-prototype-kit/step-by-step": "^2.0.0",
