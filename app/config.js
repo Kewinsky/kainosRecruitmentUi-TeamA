@@ -29,7 +29,7 @@ module.exports = {
   // Enable or disable Browser Sync (local development only)
   useBrowserSync: 'true',
 
-  bandLevel: process.env.BAND_LEVEL
+  url: process.env.URL
 
 
 }
