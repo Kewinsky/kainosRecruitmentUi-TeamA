@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router()
-
-const capability = require('./interface.js')
+const interface = require('./interface.js')
 
 
 router.get('/view-capabilities', async (req, res) => {
-    var result = await capability.getCapbilities()
+    var result = await interface.getCapbilities()
     res.render('view-capabilities', {
     capabilities: result
     })});
