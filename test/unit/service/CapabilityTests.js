@@ -2,7 +2,7 @@ var axios = require('axios');
 var MockAdapter = require('axios-mock-adapter');
 var chai = require('chai');  
 const expect = chai.expect;
-const KainosService = require('/Users/karimlatchman/course/Academy-Project/kainosRecruitmentUi-TeamA/app/interface.js');
+const KainosService = require('../../../app/interface');
 const capability = {
     roleName: "Workday AMS Recruiting Consultant",
     capabilityName: "Workday"

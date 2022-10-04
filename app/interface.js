@@ -1,5 +1,10 @@
 const axios = require('axios');
 
+var HOST = process.env.HOST
+var API = process.env.API_PORT
+var CAPABILITIES = process.env.CAPABILITIES_URL
+var BANDS = process.env.BANDS_URL
+
 exports.getJobRole = async (id) => { 
       try {  
         const jobRoleResponse = await axios.get('http://localhost:8080/api/job-specification/' + id)
@@ -23,7 +28,9 @@ exports.getCapbilities = async () => {
     let Capabilities = []
 
     try {
-        const viewCapabalility = await axios.get('http://localhost:8080/api/viewCapabilities')
+        const dotenv = require('dotenv');
+        dotenv.config();
+        const viewCapabalility = await axios.get('http://' + HOST + ':' + API + CAPABILITIES)
         console.log(viewCapabalility.data)
         return viewCapabalility.data;
 
@@ -48,7 +55,7 @@ exports.getJobRoles = async () => {
     return("Could not return roles")
 }
 exports.viewBandLevel = async () => {
-    const response = await axios.get('http://localhost:8080/api/viewBandLevel');
+    const response = await axios.get('http://' + HOST + ':' + API + BANDS);
 
         console.log(response.data)
         return response.data;
