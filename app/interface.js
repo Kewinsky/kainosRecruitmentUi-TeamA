@@ -28,11 +28,10 @@ exports.getCapbilities = async () => {
         return viewCapabalility.data;
 
     }
-    catch(e) {
-        console.log(e);
-
-    }
-    return("Could not return Capabilities")
+   catch(e) {
+           return new Error('Could not return Capabilities')
+           console.log(e);
+       }
 }
 exports.getJobRoles = async () => {
     let job_roles = []
