@@ -21,12 +21,25 @@ Job Roles – GOV.UK Prototype Kit
         <table class="govuk-table">
             <tbody class="govuk-table__body">
             <th scope="row" class="govuk-table__header">Job Roles</th>
-            {% for jobRole in jobRoles %}
-            <tr class="govuk-table__row" id="jobSpecRoleID-{{ jobRole.jobRoleId }}">
+            <th scope="row" class="govuk-table__header">Band Level</th>
+            <th scope="row" class="govuk-table__header">Capability</th>
+            {% for x in range (0, jobRoles|length) %}
+            <tr class="govuk-table__row" id="jobSpecRoleID-{{ jobRoles[x].jobRoleId }}">
                 <td class="govuk-table__cell">
-                    <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ jobRole.jobRoleId }}">
-                        {{ jobRole.roleName }}
+                    <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ jobRoles[x].jobRoleId }}">
+                        {{ jobRoles[x].roleName }}
                     </a>
+                </td>
+
+                <td class="govuk-table__cell">
+                    <p class="gov_role_band" id = {{ bandLevel[x].bandName }}_{{ jobRoles[x].jobRoleId }}>
+                        {{ bandLevel[x].bandName }}
+                    </p>
+                </td>
+                <td class="govuk-table__cell">
+                    <p class="gov_role_band" id = {{ capabilities[x].capabilityName }}_{{ jobRoles[x].jobRoleId }}>
+                        {{ capabilities[x].capabilityName }}
+                    </p>
                 </td>
             </tr>
             {% endfor %}

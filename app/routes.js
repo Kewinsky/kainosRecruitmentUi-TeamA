@@ -26,8 +26,12 @@ router.get('/job-specification/:id', async (req, res) => {
     
 router.get('/view-jobRoles', async (req, res) => {
     var result = await interface.getJobRoles()
+    var response = await interface.viewBandLevel()
+    var results = await capability.getCapbilities()
     res.render('view-jobRoles', {
-        jobRoles: result
+        jobRoles: result,
+        bandLevel:response,
+        capabilities: results
     })});
     
 
