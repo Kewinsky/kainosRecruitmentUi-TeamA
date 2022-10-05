@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Job Roles – GOV.UK Prototype Kit
+Matrix – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -17,48 +17,62 @@ Job Roles – GOV.UK Prototype Kit
             Kainos Employee System
             <span id="jobRolesTitle" class="govuk-caption-xl">Job Roles Report</span>
         </h1>{{releaseVersion | log }}
-        <p>Please see below for the list of job Roles</p>
 
-        <table class="govuk-table">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="sort">
+                Choose capability:
+            </label>
+
+            <select class="govuk-select" id="capabilitiesSelector" name="capabilitiesSelector">
+                <option selected value="1">Data & AI</option>
+                <option value="2">Engineering</option>
+            </select>
+
+            <button onclick="getOption()" class="govuk-button" data-module="govuk-button">
+                Submit
+            </button>
+        </div>
+
+        <table id="table" class="govuk-table">
             <tbody class="govuk-table__body">
-            <th scope="row" class="govuk-table__header">Band Level</th>
-            {% for cap in capabilities %}
-                <th scope="row" class="govuk-table__header">{{ cap.capabilityName }}</th>
-            {% endfor %}
+                <th scope="row" class="govuk-table__header">Band Level</th>
+                <th scope="row" class="output govuk-table__header"></th>
 
-            {% for band in bandLevels %}
-            <tr class="govuk-table__row">
-                <th class="govuk-table__cell">
-                    {{ band.bandName }}
-                </th>
-                
-                {% for job in jobRoles %}
-                    {% if job.capabilityID == 1 %}
-                        {% if job.bandID == band.bandID %}
-                            <td class="govuk-table__cell">
-                                <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
-                                {{ job.roleName }}
-                                 </a>
-                            </td>
-                            
+                {% for band in bandLevels %}
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">
+                        {{ band.bandName }}
+                    </th>
+                    {% for job in jobRoles %}
+                        {% if job.capabilityID == 1 %}
+                            {% if job.bandID == band.bandID %}
+                                <td class="govuk-table__cell">
+                                    <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
+                                    {{ job.roleName }}
+                                    </a>
+                                </td>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                    {% if job.capabilityID == 2 %}
-                        {% if job.bandID == band.bandID %}
-                            <td class="govuk-table__cell">
-                                <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
-                                {{ job.roleName }}
-                                </a>
-                            </td>
-                        {% endif %}
-                    {% endif %}
+                    {% endfor %}
                 {% endfor %}
-            </tr>
-            {% endfor %}
+                </tr>
             </tbody>
         </table>
+
+        <script type="text/javascript">
+            const jobss = jobs;
+
+            window.onload = function() {
+                getOption();
+            };
+
+            function getOption() {
+                var header = $( "#capabilitiesSelector option:selected" ).text();
+                var selectedId = $( "#capabilitiesSelector option:selected" ).val();
+                document.querySelector('.output').textContent = header;
+            }
+        </script>
     </div>
 </div>
 
 {% endblock %}
-
