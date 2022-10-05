@@ -25,8 +25,8 @@ Band Information – GOV.UK Prototype Kit
             <th scope="row" class="govuk-table__header">Category</th>
             <th scope="row" class="govuk-table__header">Description</th>
             {% for x in range (0, competencies|length) %}
-            <tr class="govuk-table__row" id="jobSpecRoleID-{{ jobRoles[x].jobRoleId }}">
-                <td class="govuk-table__cell">
+            <tr class="govuk-table__row" id="CompetenciesID-{{ competencies[x].category }}">
+                <td class="govuk-table__cell" id="Competencies-{{ competencies[x].category }}">
                     {{ competencies[x].category }}
                 </td>
 
@@ -47,8 +47,8 @@ Band Information – GOV.UK Prototype Kit
             <th scope="row" class="govuk-table__header">Hours</th>
             <th scope="row" class="govuk-table__header">Registration</th>
             {% for x in range (0, training|length) %}
-            <tr class="govuk-table__row" id="jobSpecRoleID-{{ jobRoles[x].jobRoleId }}">
-                <td class="govuk-table__cell">
+            <tr class="govuk-table__row" id="TrainingId-{{ training[x].trainingDate }}">
+                <td class="govuk-table__cell" id="Training-{{ training[x].trainingDate }}">
                     {{ training[x].trainingName }}
                 </td>
                 <td class="govuk-table__cell">
