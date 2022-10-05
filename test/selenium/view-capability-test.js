@@ -13,7 +13,7 @@ const expect = chai.expect;
 var baseUrl = 'http://localhost:3000';
 var jobRoleUrl = baseUrl.concat('/view-jobRoles');
 
-describe('UI Testing for Job Roles Webpage', () => {
+describe('UI Testing for Capability', () => {
     it('Should display the title from job roles webpage', async() => {
         var driver = new webdriver.Builder()
                    .withCapabilities(webdriver.Capabilities.chrome())
@@ -28,16 +28,17 @@ describe('UI Testing for Job Roles Webpage', () => {
         await driver.quit();
     })
 
-   it('Should display a table showing all the job roles', async() => {
+   it('Should display a table showing all the capability associated with job role', async() => {
        var driver = new webdriver.Builder()
            .withCapabilities(webdriver.Capabilities.chrome())
            .build();
 
        // Job roles webpage
        driver.get(jobRoleUrl);
-
         // Compare expected role name with actual role name for the first entry
         expect(await driver.findElement(By.id('jobSpecRoleID-1')).getText()).to.equal('Data Analyst');
+        // Compare the capability associated with the job role for the first entry
+        expect(await driver.findElement(By.id('capabilityID-1')).getText()).to.equal('Data & AI');
 
         // Close browser
        await driver.quit();
