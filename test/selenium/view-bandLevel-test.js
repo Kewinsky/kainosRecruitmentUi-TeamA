@@ -13,7 +13,7 @@ const expect = chai.expect;
 var baseUrl = 'http://localhost:3000';
 var jobRoleUrl = baseUrl.concat('/view-jobRoles');
 
-describe('UI Testing for Job Roles Webpage', () => {
+describe('UI Testing for Band Level', () => {
     it('Should display the title from job roles webpage', async() => {
         var driver = new webdriver.Builder()
                    .withCapabilities(webdriver.Capabilities.chrome())
@@ -21,14 +21,31 @@ describe('UI Testing for Job Roles Webpage', () => {
 
         // Open job roles webpage
         driver.get(jobRoleUrl);
-        // Compare expected title with actual title
+        // Compare expected role name with actual role name for the first entry
         expect(await driver.findElement(By.id('jobRolesTitle')).getText()).to.equal('Job Roles Report');
 
         // Close browser
         await driver.quit();
     })
 
-   it('Should display a table showing all the job roles', async() => {
+   it('Should display a table showing all the band level associated with job role', async() => {
+        var driver = new webdriver.Builder()
+            .withCapabilities(webdriver.Capabilities.chrome())
+            .build();
+
+        // Job roles webpage
+        driver.get(jobRoleUrl);
+
+        // Compare expected role name with actual role name for the first entry
+        expect(await driver.findElement(By.id('jobSpecRoleID-1')).getText()).to.equal('Data Analyst');
+        // Compare expected band level with actual band level for the first entry
+        expect(await driver.findElement(By.id('bandID-1')).getText()).to.equal('principal');
+
+        // Close browser
+        await driver.quit();
+   })
+
+  it('Should be able to go back onto the Homepage via back button', async() => {
        var driver = new webdriver.Builder()
            .withCapabilities(webdriver.Capabilities.chrome())
            .build();
@@ -36,25 +53,10 @@ describe('UI Testing for Job Roles Webpage', () => {
        // Job roles webpage
        driver.get(jobRoleUrl);
 
-        // Compare expected role name with actual role name for the first entry
-        expect(await driver.findElement(By.id('jobSpecRoleID-1')).getText()).to.equal('Data Analyst');
-
-        // Close browser
-       await driver.quit();
-   })
-
-  it('Should be able to go back onto the Homepage via back button', async() => {
-      var driver = new webdriver.Builder()
-          .withCapabilities(webdriver.Capabilities.chrome())
-          .build();
-
-      // Job roles webpage
-      driver.get(jobRoleUrl);
-
        // Find the back button on job roles page and click to go back to homepage
        expect(await driver.findElement(By.linkText('Back')).click());
 
        // Close browser
-      await driver.quit();
+       await driver.quit();
   })
 })
