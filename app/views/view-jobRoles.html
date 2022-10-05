@@ -26,7 +26,7 @@ Job Roles – GOV.UK Prototype Kit
             {% for x in range (0, jobRoles|length) %}
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                    <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ jobRoles[x].jobRoleId }}" id="jobSpecRoleID-{{ jobRoles[x].jobRoleId }}">
+                    <a class="govuk-footer__link" href="{{ url }}job-specification/{{ jobRoles[x].jobRoleId }}" id="jobSpecRoleID-{{ jobRoles[x].jobRoleId }}">
                         {{ jobRoles[x].roleName }}
                     </a>
                 </td>

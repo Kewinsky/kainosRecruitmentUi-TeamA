@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const interface = require('./interface.js')
-
+var Url = process.env.LOCAL_URL
 router.get('/job-specification/:id', async (req, res) => {
     var result = await interface.getJobRole(req.params.id)
     res.render('view-specification.html', {
@@ -15,7 +15,8 @@ router.get('/view-jobRoles', async (req, res) => {
     res.render('view-jobRoles', {
         jobRoles: result,
         bandLevel:response,
-        capabilities: results
+        capabilities: results,
+        url:Url
     })});
     
 
