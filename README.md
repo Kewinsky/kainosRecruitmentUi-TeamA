@@ -5,8 +5,9 @@ How to start the UI Application
 ---
 
 1. Run `npm install` to build your application
-1. Start application with `npm start`
-1. To check that your application is running enter url `http://localhost:3000`
+2. Run `export URL=http://localhost:8080/api/` to export the URL enviroment variable
+3. Start application with `npm start`
+4. To check that your application is running enter url `http://localhost:3000`
 
 Tests
 ---
