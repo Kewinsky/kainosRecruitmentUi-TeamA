@@ -35,7 +35,7 @@ describe('UI Testing for Job Specification Webpage', () => {
 
         // Open job spec webpage
         driver.get(jobSpecUrl);
-        // Compare expected title with actual title for role ID 1
+        // Compare expected role name with actual role name for role ID 1
         expect(await driver.findElement(By.id('jobRoleName')).getText()).to.equal('Data Analyst');
 
         // Close browser
@@ -50,7 +50,7 @@ describe('UI Testing for Job Specification Webpage', () => {
         var specificationTxt = "As a Data Analyst (Associate) in Kainos, you’ll be responsible for matching the needs of data insight with understanding of the available data. Data analysts work closely with customers to produce insight products including reports, dashboards and visualisations but also contribute to project understanding of existing data structures so that inputs and outputs are fully understood.";
         // Open job roles webpage
         driver.get(jobSpecUrl);
-        // Compare expected title with actual title
+        // Compare expected job specification text with actual job specification text
         expect(await driver.findElement(By.id('specTextId')).getText()).to.equal(specificationTxt);
 
         // Close browser
