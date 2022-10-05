@@ -15,26 +15,55 @@ Band Information – GOV.UK Prototype Kit
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
             Kainos Employee System
-            <span id="bandInformationTitle" class="govuk-caption-xl">Band Information</span>
+            <span id="bandInformationTitle" class="govuk-caption-xl">{{ training[0].bandName | capitalize }} Band Information</span>
         </h1>{{releaseVersion | log }}
         
+        
         <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Competencies</caption>
             <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Category</th>
-                <td id="jobRoleName" class="govuk-table__cell">{{ competencies.category }}</td>
-              </tr>
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Description</th>
-                <td id="specTextId" class="govuk-table__cell">{{ competencies.description }}</td>
-              </tr>
+            <th scope="row" class="govuk-table__header">Category</th>
+            <th scope="row" class="govuk-table__header">Description</th>
+            {% for x in range (0, competencies|length) %}
+            <tr class="govuk-table__row" id="jobSpecRoleID-{{ jobRoles[x].jobRoleId }}">
+                <td class="govuk-table__cell">
+                    {{ competencies[x].category }}
+                </td>
+
+                <td class="govuk-table__cell">
+                    {{ competencies[x].description }}
+                </td>
+            </tr>
+            {% endfor %}
             </tbody>
         </table>
-        <a href="{{ jobRole.link }}">
-            <button id="jobSpecBtn" class="govuk-button" data-module="govuk-button">
-                Open job profile
-            </button>
-        </a>
+
+
+        <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Training Courses</caption>
+            <tbody class="govuk-table__body">
+            <th scope="row" class="govuk-table__header">Training</th>
+            <th scope="row" class="govuk-table__header">Date</th>
+            <th scope="row" class="govuk-table__header">Hours</th>
+            <th scope="row" class="govuk-table__header">Registration</th>
+            {% for x in range (0, training|length) %}
+            <tr class="govuk-table__row" id="jobSpecRoleID-{{ jobRoles[x].jobRoleId }}">
+                <td class="govuk-table__cell">
+                    {{ training[x].trainingName }}
+                </td>
+                <td class="govuk-table__cell">
+                    {{ training[x].trainingDate }}
+                </td>
+                <td class="govuk-table__cell">
+                    {{ training[x].durationHours }}
+                </td>
+                <td class="govuk-table__cell">
+                    {{ training[x].registration }}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 
