@@ -1,23 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const interface = require('./interface.js')
-const capability = require('./interface.js')
-
-
-router.get('/view-capabilities', async (req, res) => {
-    var result = await capability.getCapbilities()
-    res.render('view-capabilities', {
-    capabilities: result
-    })});
-
-
- router.get('/viewBandLevel', async (req, res) => {
-     response = await viewBandLevel.viewBandLevel()
-     console.log(response);
-     res.render('viewBandLevel', {bandLevel:response } );
-   });
-
-
+var Url = process.env.LOCAL_URL
 router.get('/job-specification/:id', async (req, res) => {
     var result = await interface.getJobRole(req.params.id)
     res.render('view-specification.html', {
@@ -26,8 +10,13 @@ router.get('/job-specification/:id', async (req, res) => {
     
 router.get('/view-jobRoles', async (req, res) => {
     var result = await interface.getJobRoles()
+    var response = await interface.viewBandLevel()
+    var results = await interface.getCapbilities()
     res.render('view-jobRoles', {
-        jobRoles: result
+        jobRoles: result,
+        bandLevel:response,
+        capabilities: results,
+        url:Url
     })});
     
 router.get('/view-matrix', async (req, res) => {
