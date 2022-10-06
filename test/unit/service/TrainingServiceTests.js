@@ -9,7 +9,8 @@ const training = {
   trainingName: "Having Courageous Conversations",
   trainingDate: "2022-11-17",
   durationHours: "3.0",
-  registration: "Please complete a JIRA request"
+  registration: "Please complete a JIRA request",
+  category: "Proffesional Skills"
 }
 
 describe('interface', function () {
