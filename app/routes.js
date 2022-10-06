@@ -31,35 +31,24 @@ router.get('/view-jobRoles', async (req, res) => {
     })});
     
 router.get('/view-matrix', async (req, res) => {
-    var jobs = await interface.getJobRoles()
     var caps = await interface.getCapabilitiesNames()
-    var bands = await interface.getBandLevelNames()
-    console.log(jobs)
     res.render('view-matrix', {
-        jobRoles: jobs,
         capabilities: caps,
-        bandLevels: bands
     })});
 
 router.get('/view-matrix/1', async (req, res) => {
     var jobs = await interface.getJobRoles()
-    var caps = await interface.getCapabilitiesNames()
     var bands = await interface.getBandLevelNames()
-    console.log(jobs)
     res.render('view-dataAndAi-matrix', {
         jobRoles: jobs,
-        capabilities: caps,
         bandLevels: bands
     })});
 
 router.get('/view-matrix/2', async (req, res) => {
     var jobs = await interface.getJobRoles()
-    var caps = await interface.getCapabilitiesNames()
     var bands = await interface.getBandLevelNames()
-    console.log(jobs)
     res.render('view-engineering-matrix', {
         jobRoles: jobs,
-        capabilities: caps,
         bandLevels: bands
     })});
 
