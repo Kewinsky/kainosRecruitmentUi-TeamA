@@ -48,6 +48,21 @@ exports.getJobRoles = async () => {
     return("Could not return roles")
 }
 
+exports.getJobRolesByCapability = async (id) => {
+    let job_roles = []
+    
+    try {
+        const viewJobRoles = await axios.get('http://localhost:8080/api/job-roles-by-capability/' + id)
+        console.log(viewJobRoles.data)
+        return viewJobRoles.data;
+
+    }
+    catch(e) {
+        console.log(e);
+    }
+    return("Could not return roles")
+}
+
 exports.getBandLevelNames = async () => {
     let BandLevels = []
 

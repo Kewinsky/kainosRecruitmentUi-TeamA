@@ -29,14 +29,12 @@ Matrix – GOV.UK Prototype Kit
                         {{ band.bandName }}
                     </th>
                     {% for job in jobRoles %}
-                        {% if job.capabilityID == 1 %}
-                            {% if job.bandID == band.bandID %}
-                                <td class="govuk-table__cell">
-                                    <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
-                                    {{ job.roleName }}
-                                    </a>
-                                </td>
-                            {% endif %}
+                        {% if job.bandID == band.bandID %}
+                            <td class="govuk-table__cell">
+                                <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
+                                {{ job.roleName }}
+                                </a>
+                            </td>
                         {% endif %}
                     {% endfor %}
                 {% endfor %}
