@@ -18,6 +18,7 @@ router.get('/view-jobRoles', async (req, res) => {
         bandLevel:response,
         capabilities: results,
         url:Url
+
     })});
     
 router.get('/view-band-info/:id', async (req, res) => {
