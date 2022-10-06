@@ -5,7 +5,8 @@ var Url = process.env.LOCAL_URL
 router.get('/job-specification/:id', async (req, res) => {
     var result = await interface.getJobRole(req.params.id)
     res.render('view-specification.html', {
-        jobRole: result
+        jobRole: result,
+        url:Url
     })});
     
 router.get('/view-jobRoles', async (req, res) => {
@@ -26,7 +27,8 @@ router.get('/view-band-info/:id', async (req, res) => {
     res.render('view-band-info.html', {
         training: result,
         bandLevel: results,
-        competencies: response
+        competencies: response,
+        url:Url
     })});
 
 module.exports = router
