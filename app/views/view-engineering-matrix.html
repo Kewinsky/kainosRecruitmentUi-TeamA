@@ -22,20 +22,37 @@ Matrix – GOV.UK Prototype Kit
             <tbody class="govuk-table__body">
                 <th scope="row" class="govuk-table__header">Band Level</th>
                 <th scope="row" class="govuk-table__header">Engineering</th>
+                <th scope="row" class="govuk-table__header"></th>
+
+                {% set cellCounter = 0 %}
+                {% set maxCellsInRow = 0 %}
 
                 {% for band in bandLevels %}
-                <tr class="govuk-table__row">
+                <tr id="table-row-{{ band.bandID }}" class="govuk-table__row">
                     <th class="govuk-table__cell">
                         {{ band.bandName }}
                     </th>
+                    {% set cellsInRow = 0 %}
+
                     {% for job in jobRoles %}
                         {% if job.bandID == band.bandID %}
-                            <td class="govuk-table__cell">
+
+                        {% set cellCounter = cellCounter + 1 %}
+                        {% set cellsInRow = cellsInRow + 1 %}
+                            <td id="table-cell-{{ cellCounter }}" class="govuk-table__cell">
                                 <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
                                 {{ job.roleName }}
                                 </a>
                             </td>
                         {% endif %}
+                    {% endfor %}
+                    
+                    {% if cellsInRow > maxCellsInRow %}
+                        {% set maxCellsInRow = cellsInRow %}
+                    {% endif %}
+
+                    {% for _ in range(0, maxCellsInRow-cellsInRow) %}
+                        <td class="govuk-table__cell"></td>
                     {% endfor %}
                 {% endfor %}
                 </tr>
