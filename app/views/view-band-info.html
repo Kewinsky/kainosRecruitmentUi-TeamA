@@ -18,7 +18,7 @@ Band Information – GOV.UK Prototype Kit
             <span id="bandInformationTitle" class="govuk-caption-xl">{{ training[0].bandName | capitalize }} Band Information</span>
         </h1>{{releaseVersion | log }}
         
-        
+        {% if competencies|length %}
         <table class="govuk-table">
             <caption class="govuk-table__caption govuk-table__caption--m">Competencies</caption>
             <tbody class="govuk-table__body">
@@ -37,7 +37,7 @@ Band Information – GOV.UK Prototype Kit
             {% endfor %}
             </tbody>
         </table>
-
+        {% endif %}
 
         <table class="govuk-table">
             <caption class="govuk-table__caption govuk-table__caption--m">Training Courses</caption>
