@@ -19,12 +19,6 @@ router.get('/view-jobRoles', async (req, res) => {
         url:Url
     })});
     
-router.get('/view-matrix', async (req, res) => {
-    var caps = await interface.getCapabilitiesNames()
-    res.render('view-matrix', {
-        capabilities: caps,
-    })});
-
 router.get('/view-matrix/:id', async (req, res) => {
     var jobs = await interface.getJobRolesByCapability(req.params.id)
     var bands = await interface.getBandLevelNames()
