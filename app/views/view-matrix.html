@@ -33,43 +33,12 @@ Matrix – GOV.UK Prototype Kit
             </button>
         </div>
 
-        <table id="table" class="govuk-table">
-            <tbody class="govuk-table__body">
-                <th scope="row" class="govuk-table__header">Band Level</th>
-                <th scope="row" class="output govuk-table__header"></th>
-
-                {% for band in bandLevels %}
-                <tr class="govuk-table__row">
-                    <th class="govuk-table__cell">
-                        {{ band.bandName }}
-                    </th>
-                    {% for job in jobRoles %}
-                        {% if job.capabilityID == 1 %}
-                            {% if job.bandID == band.bandID %}
-                                <td class="govuk-table__cell">
-                                    <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
-                                    {{ job.roleName }}
-                                    </a>
-                                </td>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
-                </tr>
-            </tbody>
-        </table>
-
         <script type="text/javascript">
-            const jobss = jobs;
-
-            window.onload = function() {
-                getOption();
-            };
-
             function getOption() {
                 var header = $( "#capabilitiesSelector option:selected" ).text();
                 var selectedId = $( "#capabilitiesSelector option:selected" ).val();
-                document.querySelector('.output').textContent = header;
+                let url = 'http://localhost:3000/view-matrix/' + selectedId;
+                window.location.replace(url);
             }
         </script>
     </div>
