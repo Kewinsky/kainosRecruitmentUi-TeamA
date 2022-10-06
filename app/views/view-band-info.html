@@ -38,20 +38,16 @@ Band Information – GOV.UK Prototype Kit
             </tbody>
         </table>
 
-        {% set categories = ['Professional skills', 'Technical skills', 'Development programmes'] %}
 
-        <h1 class="govuk-table__caption govuk-table__caption--m">Training Courses</h1>
-        {% for item in categories %}
         <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Training Courses</caption>
             <tbody class="govuk-table__body">
             <th scope="row" class="govuk-table__header">Training</th>
             <th scope="row" class="govuk-table__header">Date</th>
             <th scope="row" class="govuk-table__header">Hours</th>
             <th scope="row" class="govuk-table__header">Registration</th>
-            <caption class="govuk-table__caption govuk-table__caption--m">{{ item }}</caption>
-
+            <th scope="row" class="govuk-table__header">Category</th>
             {% for x in range (0, training|length) %}
-            {% if item == training[x].category %}
             <tr class="govuk-table__row" id="TrainingId-{{ training[x].trainingDate }}">
                 <td class="govuk-table__cell" id="Training-{{ training[x].trainingDate }}">
                     {{ training[x].trainingName }}
@@ -65,9 +61,10 @@ Band Information – GOV.UK Prototype Kit
                 <td class="govuk-table__cell">
                     {{ training[x].registration }}
                 </td>
+                <td class="govuk-table__cell">
+                    {{ training[x].category }}
+                </td>
             </tr>
-            {% endif %} 
-            {% endfor %}
             {% endfor %}
             </tbody>
         </table>
