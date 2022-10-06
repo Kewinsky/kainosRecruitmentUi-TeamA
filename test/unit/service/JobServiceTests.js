@@ -3,6 +3,7 @@ var MockAdapter = require('axios-mock-adapter');
 var chai = require('chai');  
 const expect = chai.expect;
 const JobService = require('../../../app/service/JobService');
+const interface = require('../../../app/interface');
 const role = {
   roleName: "Data Analyst",
   specification: "As a Data Analyst (Associate) in Kainos, you’ll be responsible for matching the needs of data insight with understanding of the available data. Data analysts work closely with customers to produce insight products including reports, dashboards and visualisations but also contribute to project understanding of existing data structures so that inputs and outputs are fully understood.",
@@ -46,4 +47,26 @@ describe('JobService', function () {
       }
     })
  })
+
+ describe('getJobRolesByCapability', function (){
+  it('should return job roles from response', async () => {
+    var mock = new MockAdapter(axios);
+
+    const data = [role];
+    mock.onGet(JobService.URL).reply(200, data);
+    var results = await interface.getJobRolesByCapability(1);
+    expect(results[0]).to.deep.equal(role);
+  })
+
+  it('should throw exception when 500 error returned from axios', async () => {
+    var mock = new MockAdapter(axios);
+    mock.onGet(interface.URL).reply(500);
+
+    try{
+      var error = await interface.getJobRolesByCapability(-1);
+    }catch(e){
+      expect(e.message).to.equal('An error occurred while executing this request')
+    }
+  })
+})
 })
