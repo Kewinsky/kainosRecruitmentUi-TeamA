@@ -3543,7 +3543,7 @@ x:-moz-any-link {
   line-height: 1.1428571429;
   border-bottom: 10px solid #ffffff;
   color: #ffffff;
-  background: #001E60;
+  background: #0b0c0c;
 }
 @media print {
   .govuk-header {
@@ -3566,7 +3566,7 @@ x:-moz-any-link {
 
 .govuk-header__container--full-width {
   padding: 0 15px;
-  border-color: #2EB325;
+  border-color: #1d70b8;
 }
 .govuk-header__container--full-width .govuk-header__menu-button {
   right: 15px;
@@ -3576,8 +3576,8 @@ x:-moz-any-link {
   position: relative;
   margin-bottom: -10px;
   padding-top: 10px;
-  border-bottom: 10px solid  #009639;
-  }
+  border-bottom: 10px solid #1d70b8;
+}
 .govuk-header__container:after {
   content: "";
   display: block;

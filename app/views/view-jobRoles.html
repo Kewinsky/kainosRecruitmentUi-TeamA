@@ -32,9 +32,9 @@ Job Roles – GOV.UK Prototype Kit
                 </td>
 
                 <td class="govuk-table__cell">
-                    <p class="gov_role_band" id = "bandID-{{ jobRoles[x].jobRoleId }}">
+                    <a class="govuk-footer__link" href="{{ url }}view-band-info/{{ bandLevel[x].bandID }}" id="bandID-{{ jobRoles[x].jobRoleId  }}">
                         {{ bandLevel[x].bandName }}
-                    </p>
+                    </a>
                 </td>
                 <td class="govuk-table__cell">
                     <p class="gov_role_band" id = "capabilityID-{{ jobRoles[x].jobRoleId }}">
