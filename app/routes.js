@@ -37,7 +37,6 @@ router.get('/view-matrix/:id', async (req, res) => {
     var jobs = await interface.getJobRolesByCapability(req.params.id)
     var bands = await interface.getBandLevelNames()
     var capabilities = await interface.getCapabilitiesNames()
-
     res.render('view-matrix', {
         jobRoles: jobs,
         bandLevels: bands,
