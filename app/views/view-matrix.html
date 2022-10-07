@@ -21,7 +21,8 @@ Matrix – GOV.UK Prototype Kit
         <table class="govuk-table">
             <tbody class="govuk-table__body">
                 <th scope="row" class="govuk-table__header">Band Level</th>
-                <th scope="row" class="govuk-table__header">Engineering</th>
+                {% set capabilityID = jobRoles[0].capabilityID %}
+                <th scope="row" class="govuk-table__header">{{ capabilities[capabilityID - 1].capabilityName }}</th>
                 <th scope="row" class="govuk-table__header"></th>
 
                 {% set cellCounter = 0 %}

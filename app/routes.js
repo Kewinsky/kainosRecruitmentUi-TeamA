@@ -36,23 +36,32 @@ router.get('/view-band-info/:id', async (req, res) => {
 router.get('/view-matrix/:id', async (req, res) => {
     var jobs = await interface.getJobRolesByCapability(req.params.id)
     var bands = await interface.getBandLevelNames()
+    var capabilities = await interface.getCapabilitiesNames()
 
-    if (req.params.id == 1)
-    {
-        res.render('view-dataAndAi-matrix', {
-            jobRoles: jobs,
-            bandLevels: bands,
-            url:Url
-        })
-    }
-    else if (req.params.id == 2)
-    {
-        res.render('view-engineering-matrix', {
-            jobRoles: jobs,
-            bandLevels: bands,
-            url:Url
-        })
-    }
+    res.render('view-matrix', {
+        jobRoles: jobs,
+        bandLevels: bands,
+        capabilities: capabilities,
+        url:Url
+    })
+
+    // if (req.params.id == 1)
+    // {
+    //     res.render('view-dataAndAi-matrix', {
+    //         jobRoles: jobs,
+    //         bandLevels: bands,
+    //         capabilities: capabilities,
+    //         url:Url
+    //     })
+    // }
+    // else if (req.params.id == 2)
+    // {
+    //     res.render('view-engineering-matrix', {
+    //         jobRoles: jobs,
+    //         bandLevels: bands,
+    //         url:Url
+    //     })
+    // }
     });
 
 module.exports = router
