@@ -8,7 +8,7 @@ Matrix – GOV.UK Prototype Kit
 
 {{ govukBackLink({
     text: "Back",
-    href: "http://localhost:3000/view-jobRoles"
+    href: url+"view-jobRoles"
   }) }}
 
 <div class="govuk-grid-row">
@@ -40,7 +40,7 @@ Matrix – GOV.UK Prototype Kit
                         {% set cellCounter = cellCounter + 1 %}
                         {% set cellsInRow = cellsInRow + 1 %}
                             <td id="table-cell-{{ cellCounter }}" class="govuk-table__cell">
-                                <a class="govuk-footer__link" href="http://localhost:3000/job-specification/{{ job.jobRoleId }}">
+                                <a class="govuk-footer__link" href="{{ url }}job-specification/{{ job.jobRoleId }}">
                                 {{ job.roleName }}
                                 </a>
                             </td>

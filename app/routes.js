@@ -39,14 +39,16 @@ router.get('/view-matrix/:id', async (req, res) => {
     {
         res.render('view-dataAndAi-matrix', {
             jobRoles: jobs,
-            bandLevels: bands
+            bandLevels: bands,
+            url:Url
         })
     }
     else if (req.params.id == 2)
     {
         res.render('view-engineering-matrix', {
             jobRoles: jobs,
-            bandLevels: bands
+            bandLevels: bands,
+            url:Url
         })
     }
     });
