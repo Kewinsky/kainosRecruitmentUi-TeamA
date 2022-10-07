@@ -57,7 +57,7 @@ var axios = require('axios');
 
         var error = await KainosService.getCapabilitiesNames()
 
-        expect(error.message).to.equal('Could not return capabilitie names')
+        expect(error.message).to.equal('Could not return capability names')
       })
     })
 })

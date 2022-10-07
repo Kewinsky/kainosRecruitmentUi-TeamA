@@ -71,17 +71,17 @@ exports.getCapbilities = async () => {
 }
 
 exports.getCapabilitiesNames = async () => {
-    let BandLevels = []
+    let capabilities_names = []
 
     try {
-        const viewBandLevel = await axios.get(Url + 'viewCapabilitiesNames')
-        console.log(viewBandLevel.data)
-        return viewBandLevel.data;
+        const viewCapabilitiesNames = await axios.get(Url + 'viewCapabilitiesNames')
+        console.log(viewCapabilitiesNames.data)
+        return viewCapabilitiesNames.data;
 
     }
     catch(e) {
         console.log(e);
-         return new Error('Could not return capabilitie names')
+         return new Error('Could not return capability names')
     }
 }
 
@@ -129,7 +129,7 @@ exports.viewBandLevel = async () => {
 }
 
 exports.getBandLevelNames = async () => {
-    let BandLevels = []
+    let band_levels = []
 
     try {
         const viewBandLevel = await axios.get(Url + 'viewBandLevelNames')
