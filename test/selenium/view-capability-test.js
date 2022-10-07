@@ -19,7 +19,7 @@ describe('UI Testing for Capability', () => {
                    .withCapabilities(webdriver.Capabilities.chrome())
                    .build();
 
-        // Open job roles webpage
+        // Open specify webpage
         driver.get(jobRoleUrl);
         // Compare expected title with actual title
         expect(await driver.findElement(By.id('jobRolesTitle')).getText()).to.equal('Job Roles Report');
@@ -33,7 +33,7 @@ describe('UI Testing for Capability', () => {
            .withCapabilities(webdriver.Capabilities.chrome())
            .build();
 
-       // Job roles webpage
+       // Open specify webpage
        driver.get(jobRoleUrl);
         // Compare expected role name with actual role name for the first entry
         expect(await driver.findElement(By.id('jobSpecRoleID-1')).getText()).to.equal('Data Analyst');
@@ -49,7 +49,7 @@ describe('UI Testing for Capability', () => {
           .withCapabilities(webdriver.Capabilities.chrome())
           .build();
 
-      // Job roles webpage
+      // Open specify webpage
       driver.get(jobRoleUrl);
 
        // Find the back button on job roles page and click to go back to homepage

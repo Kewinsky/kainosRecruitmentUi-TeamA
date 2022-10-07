@@ -19,6 +19,42 @@ exports.getJobRole = async (id) => {
       }
   }
 
+  exports.getTraining = async (id) => { 
+    try {  
+      const trainResponse = await axios.get(Url+"view-band-training/" + id)
+      console.log(trainResponse.data)
+      return trainResponse.data;
+    } catch (e) {
+      if(e.response === undefined){
+          throw new Error("Undefined error has occurred")
+      }
+      else if(e.response.status === 500){
+          throw new Error("An error occurred while executing this request")
+      }
+      else if(e.response.status === 404){
+          throw new Error("Bad request")
+      }
+    }
+}
+
+exports.getCompetencies = async (id) => { 
+    try {  
+      const competenciesResponse = await axios.get(Url+"viewCompetencies/" + id)
+      console.log(competenciesResponse.data)
+      return competenciesResponse.data;
+    } catch (e) {
+      if(e.response === undefined){
+          throw new Error("Undefined error has occurred")
+      }
+      else if(e.response.status === 500){
+          throw new Error("An error occurred while executing this request")
+      }
+      else if(e.response.status === 404){
+          throw new Error("Bad request")
+      }
+    }
+}
+
 exports.getCapbilities = async () => {
     let Capabilities = []
 
@@ -29,9 +65,9 @@ exports.getCapbilities = async () => {
 
     }
     catch(e) {
-        console.log(e);
          return new Error('Could not return Capabilities')
-    }
+         console.log(e);
+       }
 }
 
 exports.getCapabilitiesNames = async () => {
