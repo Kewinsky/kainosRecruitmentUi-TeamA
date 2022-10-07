@@ -8,6 +8,7 @@ router.get('/job-specification/:id', async (req, res) => {
         jobRole: result,
         url:Url
     })});
+
     
 router.get('/view-jobRoles', async (req, res) => {
     var result = await interface.getJobRoles()
