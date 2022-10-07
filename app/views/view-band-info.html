@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout_custom.html" %}
 
 {% block pageTitle %}
 Band Information – GOV.UK Prototype Kit
@@ -16,8 +16,7 @@ Band Information – GOV.UK Prototype Kit
         <h1 class="govuk-heading-xl">
             Kainos Employee System
             <span id="bandInformationTitle" class="govuk-caption-xl">{{ training[0].bandName | capitalize }} Band Information</span>
-        </h1>{{releaseVersion | log }}
-        
+        </h1>{{releaseVersion | log }}    
         {% if competencies|length %}
         <table class="govuk-table">
             <caption class="govuk-table__caption govuk-table__caption--m">Competencies</caption>
