@@ -18,6 +18,7 @@ describe('interface', function () {
         mock.onGet(interface.URL).reply(200, data);
 
         var result = await interface.getCompetencies(4);
+        console.log(result[1]);
         expect(comp.description).to.equal(result.description);
       })
 
