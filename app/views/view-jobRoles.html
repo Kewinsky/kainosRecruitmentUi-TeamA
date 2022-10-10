@@ -39,7 +39,7 @@ Job Roles – GOV.UK Prototype Kit
                 {% set capabilityID = job.capabilityID %}
                 <td class="govuk-table__cell">
                     <p class="gov_role_band" id = "capabilityID-{{ job.jobRoleId }}">
-                       <a class="govuk-footer__link" href="http://localhost:3000/view-matrix/{{job.capabilityID}}">
+                       <a class="govuk-footer__link" href="{{ url }}view-matrix/{{job.capabilityID}}">
                         {{ capabilities[capabilityID-1].capabilityName }}</a>
                     </p>
                 </td>
