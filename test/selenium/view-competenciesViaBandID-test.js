@@ -90,7 +90,7 @@ describe('UI Testing for Competencies via bandID', () => {
        // Click on the first band level from job roles webpage
        expect(await driver.findElement(By.id('bandID-1')).click());
        // Compare expected title with actual title on the band information webpage
-       expect(await driver.findElement(By.id('bandInformationTitle')).getText()).to.equal('Principal Band Information');
+       expect(await driver.findElement(By.id('bandInformationTitle')).getText()).to.equal('Associate Band Information');
 
        // Close browser
        await driver.quit();
