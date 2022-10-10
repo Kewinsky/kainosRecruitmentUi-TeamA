@@ -8,7 +8,6 @@ router.get('/job-specification/:id', async (req, res) => {
         jobRole: result,
         url:Url
     })});
-
     
 router.get('/view-jobRoles', async (req, res) => {
     var result = await interface.getJobRoles()
@@ -31,7 +30,7 @@ router.get('/view-band-info/:id', async (req, res) => {
         competencies: response,
         url:Url
     })});
-    
+
 router.get('/view-matrix/:id', async (req, res) => {
     var jobs = await interface.getJobRolesByCapability(req.params.id)
     var bands = await interface.getBandLevelNames()
