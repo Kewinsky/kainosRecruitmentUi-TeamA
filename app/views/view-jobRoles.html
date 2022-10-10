@@ -23,22 +23,24 @@ Job Roles – GOV.UK Prototype Kit
             <th scope="row" class="govuk-table__header">Job Roles</th>
             <th scope="row" class="govuk-table__header">Band Level</th>
             <th scope="row" class="govuk-table__header">Capability</th>
-            {% for x in range (0, jobRoles|length) %}
+            {% for job in jobRoles %}
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                    <a class="govuk-footer__link" href="{{ url }}job-specification/{{ jobRoles[x].jobRoleId }}" id="jobSpecRoleID-{{ jobRoles[x].jobRoleId }}">
-                        {{ jobRoles[x].roleName }}
+                    <a class="govuk-footer__link" href="{{ url }}job-specification/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
+                        {{ job.roleName }}
                     </a>
                 </td>
-
+                {% set bandID = job.bandID %}
                 <td class="govuk-table__cell">
-                    <a class="govuk-footer__link" href="{{ url }}view-band-info/{{ bandLevel[x].bandID }}" id="bandID-{{ jobRoles[x].jobRoleId  }}">
-                        {{ bandLevel[x].bandName }}
+                    <a class="govuk-footer__link" href="{{ url }}view-band-info/{{ job.bandID }}" id="bandID-{{ job.jobRoleId  }}">
+                        {{ bandLevel[bandID-1].bandName }}
                     </a>
                 </td>
+                {% set capabilityID = job.capabilityID %}
                 <td class="govuk-table__cell">
-                    <p class="gov_role_band" id = "capabilityID-{{ jobRoles[x].jobRoleId }}">
-                        {{ capabilities[x].capabilityName }}
+                    <p class="gov_role_band" id = "capabilityID-{{ job.jobRoleId }}">
+                       <a class="govuk-footer__link" href="http://localhost:3000/view-matrix/{{job.capabilityID}}"> 
+                        {{ capabilities[capabilityID-1].capabilityName }}</a>
                     </p>
                 </td>
             </tr>
