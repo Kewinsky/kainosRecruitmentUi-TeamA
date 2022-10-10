@@ -8,7 +8,7 @@ Job Specification – GOV.UK Prototype Kit
 
 {{ govukBackLink({
   text: "Back",
-  href: "http://localhost:3000/view-jobRoles"
+  href: url+"view-jobRoles"
 }) }}
 
 <div class="govuk-grid-row">
@@ -31,7 +31,7 @@ Job Specification – GOV.UK Prototype Kit
             </tbody>
         </table>
         <a href="{{ jobRole.link }}">
-            <button id="jobSpecBtn" class="govuk-button" data-module="govuk-button">
+            <button colour="#009639" id="jobSpecBtn" class="govuk-button" data-module="govuk-button">
                 Open job profile
             </button>
         </a>
