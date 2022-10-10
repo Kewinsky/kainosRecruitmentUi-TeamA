@@ -51,7 +51,6 @@ describe('JobService', function () {
  describe('getJobRolesByCapability', function (){
   it('should return job roles from response', async () => {
     var mock = new MockAdapter(axios);
-
     const data = [role];
     mock.onGet(JobService.URL).reply(200, data);
     var results = await interface.getJobRolesByCapability(1);
@@ -61,7 +60,6 @@ describe('JobService', function () {
   it('should throw exception when 500 error returned from axios', async () => {
     var mock = new MockAdapter(axios);
     mock.onGet(interface.URL).reply(500);
-
     try{
       var error = await interface.getJobRolesByCapability(-1);
     }catch(e){

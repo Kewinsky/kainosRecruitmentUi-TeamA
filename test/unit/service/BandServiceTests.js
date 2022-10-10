@@ -36,21 +36,15 @@ describe('interface',function(){
             var mock = new MockAdapter(axios);
             const data = [bandName];
             mock.onGet(interface.URL).reply(200, data);
-
             var results = await interface.getBandLevelNames();
-
             expect(results[0]).to.deep.equal(bandName)
 
         })
 
          it('should throw exception when 500 error returned from axios', async () => {
                 var mock = new MockAdapter(axios);
-
                 mock.onGet(interface.URL).reply(500);
-
                 var error = await interface.getBandLevelNames();
-
-
                 expect(error.message).to.equal('Could not get band names')
               })
     })
