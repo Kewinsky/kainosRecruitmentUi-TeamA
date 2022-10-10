@@ -23,6 +23,8 @@ Job Roles – GOV.UK Prototype Kit
             <th scope="row" class="govuk-table__header">Job Roles</th>
             <th scope="row" class="govuk-table__header">Band Level</th>
             <th scope="row" class="govuk-table__header">Capability</th>
+            <th scope="row" class="govuk-table__header">Responsibility</th>
+
             {% for x in range (0, jobRoles|length) %}
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
@@ -39,6 +41,11 @@ Job Roles – GOV.UK Prototype Kit
                 <td class="govuk-table__cell">
                     <p class="gov_role_band" id = "capabilityID-{{ jobRoles[x].jobRoleId }}">
                         {{ capabilities[x].capabilityName }}
+                    </p>
+                </td>
+                <td class="govuk-table__cell">
+                    <p class="gov_role_band" id = "responsibilityID-{{ jobRoles[x].jobRoleId }}">
+                        {{ jobRoles[x].responsibility }}
                     </p>
                 </td>
             </tr>
