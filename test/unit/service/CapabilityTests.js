@@ -7,7 +7,7 @@ var axios = require('axios');
      roleName: "Workday AMS Recruiting Consultant",
      capabilityName: "Workday"
  }
-
+ URL = '/api/viewCapabilities/'
  describe('KainosService', function () {
      describe('getCapabilities', function () {
        it('should return capabilities from response', async () => {
