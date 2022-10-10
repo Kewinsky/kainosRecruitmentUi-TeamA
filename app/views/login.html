@@ -1,0 +1,38 @@
+
+{% extends "layout_custom.html" %}
+
+{% block pageTitle %}
+  Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Kainos Employee System
+      </h1>{{releaseVersion | log }}
+      <fieldset class="govuk-fieldset">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-line-1">
+            Email
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="email" name="email" type="email" autocomplete="email">
+        </div>
+      
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-line-2">
+            Password
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="paassword" name="paassword" type="password" autocomplete="paassword">
+        </div>
+        <button class="govuk-button" data-module="govuk-button">
+          Log in
+        </button>
+      </fieldset>
+
+      
+    </div>
+  </div>
+
+{% endblock %}

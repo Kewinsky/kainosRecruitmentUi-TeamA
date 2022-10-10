@@ -68,10 +68,19 @@ Kainos Employee System
             </a>
         </div>
         <div class="govuk-header__content">
-            <a href="/index.html" class="govuk-header__link govuk-header__service-name">
-                Kainos Employee System
-            </a>
+            <a href="/index.html" class="govuk-header__link govuk-header__service-name">Kainos Employee System</a>
+            <nav aria-label="Menu" class="govuk-header__navigation ">
+                <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" hidden>Menu</button>
+                <ul id="navigation" class="govuk-header__navigation-list">
+                    <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="login.html">
+                        Login
+                    </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
+        
     </div>
 </header>
 {% endblock %}
