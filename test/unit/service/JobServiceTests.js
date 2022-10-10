@@ -61,9 +61,13 @@ describe('JobService', function () {
     var mock = new MockAdapter(axios);
     mock.onGet(interface.URL).reply(500);
     try{
+
       var error = await interface.getJobRolesByCapability(-1);
+      
     }catch(e){
+
       expect(e.message).to.equal('An error occurred while executing this request')
+
     }
   })
 })
