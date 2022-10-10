@@ -29,9 +29,13 @@ describe('JobService', function () {
       mock.onGet(JobService.URL).reply(500);
 
       try{
+
         var error = await JobService.getJobRoles()
+
       }catch(e){
+
         expect(e.message).to.equal('An error occurred while executing this request')
+        
       }
     })
 
@@ -41,9 +45,13 @@ describe('JobService', function () {
       mock.onGet(JobService.URL).reply(404);
 
       try{
+
         var error = await JobService.getJobRoles()
+
       }catch(e){
+
         expect(e.message).to.equal('Bad request')
+
       }
     })
  })
@@ -65,7 +73,7 @@ describe('JobService', function () {
       var error = await interface.getJobRolesByCapability(-1);
       
     }catch(e){
-
+      
       expect(e.message).to.equal('An error occurred while executing this request')
 
     }
