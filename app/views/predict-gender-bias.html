@@ -34,9 +34,24 @@
 
       </form>
       <body>
-        <p>
-          {{ jobRole }}
-        </p>
+        <table class="govuk-table">
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Percentage of biased words in text</th>
+              <td id="jobRoleName" class="govuk-table__cell">{{ biasInfo.percentage_bias }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Detected male biased words</th>
+              <td id="specTextId" class="govuk-table__cell">{{ biasInfo.biased_words_male }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Detected female biased words</th>
+              <td id="specTextId" class="govuk-table__cell">{{ biasInfo.biased_words_female }}</td>
+            </tr>
+          </tbody>
+      </table>
+
+
       </body>
 
     </div>

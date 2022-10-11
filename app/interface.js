@@ -96,5 +96,19 @@ exports.viewBandLevel = async () => {
      }
 }
 
+exports.getGenderBias = async (biasInput) => {
+    
+    try {
+        const genderBias = await axios.post(Url+"gender-bias", {biasInput})
+        console.log(genderBias.data)
+        return genderBias.data;
+    }
+    catch(e) {
+        console.log(e);
+
+    }
+    return("Could not return the gender bias")
+}
+
 
 
