@@ -12,7 +12,7 @@ const { assert } = require('chai');
 const expect = chai.expect;
 var baseUrl = 'http://localhost:3000';
 var jobRoleUrl = baseUrl.concat('/view-jobRoles');
-var bandInfoTrainingUrl = baseUrl.concat('/view-band-info/1');
+var bandInfoTrainingUrl = baseUrl.concat('/view-band-info/5');
 
 describe('UI Testing for Training via bandID', () => {
     it('Should display the title from Band Information webpage', async() => {
@@ -23,7 +23,7 @@ describe('UI Testing for Training via bandID', () => {
         // Open specify webpage
         driver.get(bandInfoTrainingUrl);
         // Compare expected role name with actual role name for the first entry
-        expect(await driver.findElement(By.id('bandInformationTitle')).getText()).to.equal('Principal Band Information');
+        expect(await driver.findElement(By.id('bandInformationTitle')).getText()).to.equal('Associate Band Information');
 
         // Close browser
         await driver.quit();
@@ -38,7 +38,7 @@ describe('UI Testing for Training via bandID', () => {
        driver.get(bandInfoTrainingUrl);
 
        // Compare expected competencies name with actual competencies name for bandID 1
-       expect(await driver.findElement(By.id('Training-2022-11-17')).getText()).to.equal('Having Courageous Conversations');
+       expect(await driver.findElement(By.id('Training-2022-10-17')).getText()).to.equal('Enhancing your Communication Skills');
 
        // Close browser
        await driver.quit();
@@ -72,7 +72,7 @@ describe('UI Testing for Training via bandID', () => {
        // Click on the first band level from job roles webpage
        expect(await driver.findElement(By.id('bandID-1')).click());
        // Compare expected title with actual title on the band information webpage
-       expect(await driver.findElement(By.id('bandInformationTitle')).getText()).to.equal('Principal Band Information');
+       expect(await driver.findElement(By.id('bandInformationTitle')).getText()).to.equal('Associate Band Information');
 
        // Close browser
        await driver.quit();
