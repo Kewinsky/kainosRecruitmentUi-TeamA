@@ -28,5 +28,12 @@ router.get('/view-band-info/:id', async (req, res) => {
         bandLevel: results,
         competencies: response
     })});
+    
+router.get('/gender-bias', async (req, res) => {
+    //var result = await interface.getJobRole(req.params.id)
+    var genderBias = req.session.data['gender-bias']
+    res.render('predict-gender-bias.html', {
+        jobRole: genderBias
+    })});
 
 module.exports = router
