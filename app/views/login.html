@@ -12,27 +12,61 @@
       <h1 class="govuk-heading-xl">
         Kainos Employee System
       </h1>{{releaseVersion | log }}
-      <fieldset class="govuk-fieldset">
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="address-line-1">
-            Email
-          </label>
-          <input class="govuk-input govuk-!-width-two-thirds" id="email" name="email" type="email" autocomplete="email">
-        </div>
-      
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="address-line-2">
-            Password
-          </label>
-          <input class="govuk-input govuk-!-width-two-thirds" id="paassword" name="paassword" type="password" autocomplete="paassword">
-        </div>
-        <button class="govuk-button" data-module="govuk-button">
-          Log in
-        </button>
-      </fieldset>
+      <form id="form" action="" method="POST" onsubmit="return false">
+        <fieldset class="govuk-fieldset">
+          <div id="error" class="govuk-warning-text" style="display: none;">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              Something went wrong
+            </strong>
+          </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="email">Email</label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="email" type="email" autocomplete="off" required>
+          </div>
+        
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="paassword">Password</label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="password" type="password" autocomplete="off" required>
+          </div>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Login
+            </button>
+        </fieldset>
+      </form>
 
       
     </div>
   </div>
+  <script>
+    const form = document.getElementById("form")
+    form.addEventListener("submit", () => {
+      const login = {
+        email: email.value,
+        password: password.value
+      }
 
+      fetch("/login", {
+        method: "POST",
+        body: JSON.stringify(login),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(res => res.json())
+      .then(data => {
+        if (data.status == "error"){
+          // success.style.display = "none"
+          error.style.display = "block"
+          error.innerText = data.error
+        } 
+        // else {
+        //   error.style.display = "none"
+        //   success.style.display = "block"
+        //   success.innerText = data.success
+        // }
+      })
+    })
+  </script>
 {% endblock %}
+

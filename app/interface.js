@@ -142,3 +142,14 @@ exports.getBandLevelNames = async () => {
     }
 }
 
+exports.getUserByEmail = async (email) => {
+    try {
+        const viewUser = await axios.get(Url + 'user/' + email)
+        console.log(viewUser.data)
+        return viewUser.data;
+    }
+    catch(e) {
+        console.log(e);
+    }
+    return("Could not return user")
+}
