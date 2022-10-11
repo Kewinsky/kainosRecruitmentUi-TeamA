@@ -4,6 +4,7 @@ var chai = require('chai');
 const expect = chai.expect;
 const interface = require('../../../app/interface');
 const band =  { roleName: 'Principle Architect', bandName: 'principal' }
+const bandName =  { bandName: 'principal' }
 URL = '/api/viewBandLevel/'
 describe('interface',function(){
     describe('viewBandLevel',function(){
@@ -27,6 +28,24 @@ describe('interface',function(){
 
 
                 expect(error.message).to.equal('Could not get band')
+              })
+    })
+
+    describe('getBandLevelNames',function(){
+        it('should return band level from response', async() =>{
+            var mock = new MockAdapter(axios);
+            const data = [bandName];
+            mock.onGet(interface.URL).reply(200, data);
+            var results = await interface.getBandLevelNames();
+            expect(results[0]).to.deep.equal(bandName)
+
+        })
+
+         it('should throw exception when 500 error returned from axios', async () => {
+                var mock = new MockAdapter(axios);
+                mock.onGet(interface.URL).reply(500);
+                var error = await interface.getBandLevelNames();
+                expect(error.message).to.equal('Could not get band names')
               })
     })
 })
