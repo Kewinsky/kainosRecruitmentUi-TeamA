@@ -33,6 +33,7 @@
         <button class="govuk-button" data-module="govuk-button">Submit</button>
 
       </form>
+      {% if biasInfo|length %}
       <body>
         <table class="govuk-table">
           <tbody class="govuk-table__body">
@@ -50,7 +51,7 @@
             </tr>
           </tbody>
       </table>
-
+      {% endif %}
 
       </body>
 
