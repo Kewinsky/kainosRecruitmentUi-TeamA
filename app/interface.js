@@ -142,3 +142,16 @@ exports.getBandLevelNames = async () => {
     }
 }
 
+exports.deleteJobRoles = async (idList) => {
+
+    try {
+        const delJobRoles = await axios.delete(Url + 'delete-job-roles', { data: idList } )
+        console.log(delJobRoles.data)
+        return delJobRoles.data;
+
+    }
+    catch (e) {
+        return new Error('Could not delete these Jobs')
+    }
+}
+

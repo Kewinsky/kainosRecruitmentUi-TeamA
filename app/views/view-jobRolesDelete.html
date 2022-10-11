@@ -11,9 +11,6 @@ Job Roles – GOV.UK Prototype Kit
     href: url+"index"
 }) }}
 
-
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
@@ -21,25 +18,50 @@ Job Roles – GOV.UK Prototype Kit
             <span id="jobRolesTitle" class="govuk-caption-xl">Job Roles Report</span>
         </h1>{{releaseVersion | log }}
         <p>Please see below for the list of job Roles</p>
+        {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
-        <button class="govuk-button" data-module="govuk-button" onclick="myFunction()">
+        {{ govukWarningText({
+          text: "You might delete required job roles",
+          iconFallbackText: "Warning"
+        }) }}
+
+        <form class="form" action="/roles-to-delete" method="post">
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+            
+
+        <button class="govuk-button govuk-button--warning" data-module="govuk-button">
             Delete roles
           </button>
-
-          <script>
-            function myFunction() {
-              location.href = "view-jobRoles-delete";
-            }
-            </script>
           
-
         <table class="govuk-table">
             <tbody class="govuk-table__body">
+            <th scope="row" class="govuk-table__header">Edit</th>
             <th scope="row" class="govuk-table__header">Job Roles</th>
             <th scope="row" class="govuk-table__header">Band Level</th>
             <th scope="row" class="govuk-table__header">Capability</th>
             {% for job in jobRoles %}
             <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+                    {{ govukCheckboxes({
+                    name: "id",
+                    classes: "govuk-checkboxes--small",
+                    fieldset: {
+                        legend: {
+                        text: "",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                        value: job.jobRoleId,
+                        text: " "
+                        }
+                    ]
+                    }) }}
+                </td>
                 <td class="govuk-table__cell">
                     <a class="govuk-footer__link" href="{{ url }}job-specification/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
                         {{ job.roleName }}
@@ -62,6 +84,7 @@ Job Roles – GOV.UK Prototype Kit
             {% endfor %}
             </tbody>
         </table>
+    </form>
     </div>
 </div>
 
