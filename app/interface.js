@@ -142,3 +142,24 @@ exports.getBandLevelNames = async () => {
     }
 }
 
+exports.createJobWithoutLink = async(id,jobRole) => {
+        try{
+        console.log("I am in the interface")
+        console.log(jobRole)
+        const response = await axios.put(Url+'editJobRole/'+id, jobRole)
+
+        return response.data
+        }
+        catch(e){
+            if(e.response.status==400){
+                return new Error('Invalid data')
+            }
+            if(e.response.status==500){
+                return new Error('Could not create employee')
+            }
+            else{
+                return new Error("went wrong")
+            }
+        }
+}
+

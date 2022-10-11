@@ -1,0 +1,41 @@
+{% extends "layout_custom.html" %}
+
+{% block pageTitle %}
+Job Specification – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+{{ govukBackLink({
+text: "Back",
+href: url+"view-jobRoles"
+}) }}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            Kainos Employee System
+            <span id="jobSpecificationTitle" class="govuk-caption-xl"></span>
+        </h1>{{releaseVersion | log }}
+
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Job Role Name</th>
+                <td id="jobRoleName" class="govuk-table__cell">{{ jobRole.roleName }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Specification</th>
+                <td id="specTextId" class="govuk-table__cell">{{ jobRole.specification }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="{{ jobRole.link }}">
+            <button colour="#009639" id="jobSpecBtn" class="govuk-button" data-module="govuk-button">
+                Open job profile
+            </button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

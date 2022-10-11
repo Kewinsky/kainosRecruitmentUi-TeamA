@@ -1,0 +1,137 @@
+{% extends "layout_custom.html" %}
+
+{% block pageTitle %}
+Home – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+{{ govukBackLink({
+text: "Back",
+href: url+"view-JobRoles"
+}) }}
+
+<div class="govuk-grid-row" xmlns="http://www.w3.org/1999/html">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            Kainos Admin System
+            <span id="jobSpecificationTitle" class="govuk-caption-xl"> Edit a Job Role</span>
+        </h1>{{releaseVersion | log }}
+
+        {% if errormessage %}
+        <div class="govuk-error-message">{{ errormessage }}</div>
+        {% endif %}
+
+        <form class="form" action="/edit-job-role/{{ id }}" method="post">
+
+        <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="roleName">
+                Role Name
+            </label>
+            </h1>
+            <input class="govuk-input" id="roleName" name="roleName" type="text" value="{{jobRole.roleName}}">
+        </div>
+        <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="specification">
+                Specification
+            </label>
+            </h1>
+            <div id="more-detail-hint" class="govuk-hint">
+                Include detailed information about the specification of the selected job role.
+            </div>
+            <textarea class="govuk-textarea" id="specification" name="specification" rows="7" aria-describedby="more-detail-hint" >{{jobRole.specification}}</textarea>
+        </div>
+        <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="responsibility">
+                Responsibility
+            </label>
+            </h1>
+            <div id="more-detail-hint" class="govuk-hint">
+                Include detailed information about the responsibilities of the selected job role.
+            </div>
+            <textarea class="govuk-textarea" id="responsibility" name="responsibility" rows="5">{{jobRole.responsibility}}</textarea>
+        </div>
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+        name: "bandID",
+        fieldset: {
+        legend: {
+        text: "Band",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+        }
+        },
+        hint: {
+        text: " The current Band  is "+ band
+        },
+        items: [
+        {
+        value: "1",
+        text: "Principal",
+            checked:bandCheck1
+        },
+        {
+        value: "2",
+        text: "Manager",
+            checked:bandCheck2
+        },
+        {
+        value: "3",
+        text: "Consultant",
+            checked:bandCheck3
+        },
+        {
+        value: "4",
+        text: "Senior Associate",
+            checked:bandCheck4
+        },
+        {
+        value: "5",
+        text: "Associate",
+            checked:bandCheck5
+        },
+        {
+        value: "6",
+        text: "Trainee",
+            checked:bandCheck6
+        }
+        ]
+        }) }}
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+        name: "capabilityID",
+        fieldset: {
+        legend: {
+        text: "Capability",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+        }
+        },
+        hint: {
+        text: " The current capability  is "+cap
+        },
+        items: [
+        {
+        value: "1",
+        text: "Data & AI",
+            checked:capCheck1
+        },
+        {
+        value: "2",
+        text: "Engineering",
+            checked:capCheck2
+
+        }
+        ]
+        }) }}
+            <button class="govuk-button" type = "submit" id="submit">Submit Edited Job Role</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -23,6 +23,7 @@ Job Roles – GOV.UK Prototype Kit
             <th scope="row" class="govuk-table__header">Job Roles</th>
             <th scope="row" class="govuk-table__header">Band Level</th>
             <th scope="row" class="govuk-table__header">Capability</th>
+            <th scope="row" class="govuk-table__header">Edit Job Role </th>
             {% for job in jobRoles %}
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
@@ -42,6 +43,12 @@ Job Roles – GOV.UK Prototype Kit
                        <a class="govuk-footer__link" href="{{ url }}view-matrix/{{job.capabilityID}}">
                         {{ capabilities[capabilityID-1].capabilityName }}</a>
                     </p>
+                </td>
+                <td class="govuk-table__cell">
+                    <a class="govuk-footer__link" href="{{ url }}edit-job-role/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
+                        Edit {{ job.roleName }}
+                    </a>
+                </td>
                 </td>
             </tr>
             {% endfor %}
