@@ -29,7 +29,7 @@ router.get('/view-band-info/:id', async (req, res) => {
         competencies: response
     })});
     
-router.get('/gender-bias-results', async (req, res) => {
+router.get('/gender-bias-result', async (req, res) => {
     //var result = await interface.getJobRole(req.params.id)
     var genderBias = await interface.getGenderBias(req.session.data['gender-bias'])     
     res.render('predict-gender-bias.html', {
