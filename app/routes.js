@@ -77,7 +77,7 @@ router.get('/view-band-info/:id', async (req, res) => {
         competencies: response,
         url:Url
     })});
-    
+
 router.get('/view-matrix/:id', async (req, res) => {
     var jobs = await interface.getJobRolesByCapability(req.params.id)
     var bands = await interface.getBandLevelNames()
