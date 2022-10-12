@@ -104,10 +104,11 @@ exports.getGenderBias = async (biasInput) => {
         return genderBias.data;
     }
     catch(e) {
+        return new Error("Could not return the gender bias. Please try again.")
         console.log(e);
 
     }
-    return("Could not return the gender bias. Please try again.")
+    
 }
 
 
