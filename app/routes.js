@@ -41,12 +41,7 @@ router.post('/auth', async (req, res) => {
 });
 
 router.get('/profile', auth, (req, res) => {
-    if(req.email){
-        res.json({  email: req.email, password: req.password });
-    }
-    else{
-        res.redirect("authorization");
-    }
+    res.json({  email: req.email, password: req.password });
 });
 
 router.get("/logout", auth, (req, res) => {

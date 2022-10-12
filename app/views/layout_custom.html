@@ -72,16 +72,21 @@ Kainos Employee System
             <nav aria-label="Menu" class="govuk-header__navigation ">
                 <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" hidden>Menu</button>
                 <ul id="navigation" class="govuk-header__navigation-list">
-                    <li class="govuk-header__navigation-item">
-                    <a class="govuk-header__link" href="login.html">
-                        Login
-                    </a>
+                    <li id="loginBtn" class="govuk-header__navigation-item" style="display: block;">
+                        <a class="govuk-header__link" href="login.html">
+                            Login
+                        </a>
                     </li>
                     <li class="govuk-header__navigation-item">
+                        <a class="govuk-header__link" href="/profile">
+                            Profile
+                        </a>
+                    </li>
+                    <li id="logoutBtn" class="govuk-header__navigation-item" style="display: block;">
                         <a class="govuk-header__link" href="logout.html">
                             Logout
                         </a>
-                        </li>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -101,8 +106,6 @@ Kainos Employee System
                 <h2 class="govuk-visually-hidden">Support links</h2>
                 <ul class="govuk-footer__inline-list">
                     <li class="govuk-footer__inline-list-item">
-                    </li>
-                    <li class="govuk-footer__inline-list-item">
                         <a class="govuk-footer__link" href="https://www.kainos.com">
                             Kainos Employee System Prototype v1.0
                         </a>
@@ -111,12 +114,24 @@ Kainos Employee System
                         <a class="govuk-footer__link" href="/prototype-admin/clear-data">
                             Clear data
                         </a>
-
+                    </li>
                 </ul>
-
         </div>
     </div>
 </footer>
+
+<script>
+    // const cookie = document.cookie.length;
+    // console.log(cookie)
+    // if (cookie) {
+    //     document.getElementById('loginBtn').style.display = 'none'
+    //     document.getElementById('logoutBtn').style.display = 'block'
+    // }
+    // else{
+    //     document.getElementById('loginBtn').style.display = 'block'
+    //     document.getElementById('logoutBtn').style.display = 'none'
+    // }
+</script>
 
 {% endblock %}
 {% endif %}
