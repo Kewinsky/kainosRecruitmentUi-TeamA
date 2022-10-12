@@ -12,6 +12,14 @@ const role = {
   capabilityID: 1
 }
 
+const newRole = {
+  role_name: "New Job Role",
+  role_description: "As an Innovation Lead (Consultant) in Kainos, youll be responsible will lead the team, working with the Innovation Lead in a dynamic and hands-on role which will involve managing and developing the team, implementing and shaping Kainos innovation strategy and effectively communicating the exciting work we undertake both internally and within the wider technology community.",
+  sharepoint_url: "https://kainossoftwareltd.sharepoint.com/people/Job%20Specifications/Forms/AllItems.aspx?id=%2Fpeople%2FJob%20Specifications%2FEngineering%2FJob%20profile%20%2D%20Innovation%20Lead%20%28Consultant%29%2Epdf&parent=%2Fpeople%2FJob%20Specifications%2FEngineering&p=true&ga=1",
+  cap_id: 1,
+  band_id: 1
+}
+
 describe('JobService', function () {
   describe('getJobRoles', function (){
     it('should return job roles from response', async () => {
@@ -79,4 +87,52 @@ describe('JobService', function () {
     }
   })
 })
+})
+
+describe('addJobRole', function (){
+  it('should return new job role id from response', async () => {
+    var mock = new MockAdapter(axios);
+
+    var id = 1
+
+    mock.onPost('/api/add-job-roles').reply(200, id);
+    var results = await interface.addJobRole(newRole);
+    expect(results).to.deep.equal(id);
+  })
+
+  it('should return error message when error 500 occurs', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onPost('/api/add-job-roles').reply(500);
+
+    try{
+      var error = await interface.addJobRole(newRole)
+    }catch(e){
+      expect(e.message).to.equal('An error occurred while executing this request')
+    }
+  })
+
+  it('should return error message when error 400 occurs', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onPost('/api/add-job-roles').reply(400);
+
+    try{
+      var error = await interface.addJobRole(newRole)
+    }catch(e){
+      expect(e.message).to.equal('Bad request')
+    }
+  })
+
+  it('should return error message when error 404 occurs', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onPost('/api/add-job-roles').reply(404);
+
+    try{
+      var error = await interface.addJobRole(newRole)
+    }catch(e){
+      expect(e.message).to.equal('Bad request')
+    }
+  })
 })
