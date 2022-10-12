@@ -18,13 +18,19 @@ Job Roles – GOV.UK Prototype Kit
             <span id="jobRolesTitle" class="govuk-caption-xl">Job Roles Report</span>
         </h1>{{releaseVersion | log }}
         <p>Please see below for the list of job Roles</p>
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+        text: "Edit",
+        href: url+"view-jobRoles-Edit",
+        isStartButton: true
+        }) }}
         <table class="govuk-table">
             <tbody class="govuk-table__body">
             <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Job Roles</th>
             <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Band Level</th>
             <th scope="row" class="govuk-table__header" style="padding: 0 50px;" >Capability</th>
             <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Responsibility</th>
-            <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Edit Job Role </th>
             {% for job in jobRoles %}
             <tr class="govuk-table__row" >
                 <td class="govuk-table__cell" style="padding: 5px 50px;">
@@ -49,12 +55,6 @@ Job Roles – GOV.UK Prototype Kit
                     <p class="gov_role_band" id = "responsibilityID-{{ job.jobRoleId }}">
                         {{ job.responsibility }}
                     </p>
-                </td>
-                <td class="govuk-table__cell"  style="padding: 5px 50px;">
-                    <a class="govuk-footer__link" href="{{ url }}edit-job-role/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
-                        Edit {{ job.roleName }}
-                    </a>
-                </td>
                 </td>
             </tr>
             {% endfor %}

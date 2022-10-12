@@ -19,6 +19,18 @@ router.get('/view-jobRoles', async (req, res) => {
         capabilities: results,
         url:Url
     })});
+
+
+router.get('/view-jobRoles-Edit', async (req, res) => {
+    var result = await interface.getJobRoles()
+    var response = await interface.getBandLevelNames()
+    var results = await interface.getCapabilitiesNames()
+    res.render('view-job-roles-with-edit', {
+        jobRoles: result,
+        bandLevel: response,
+        capabilities: results,
+        url:Url
+    })});
     
 router.get('/view-band-info/:id', async (req, res) => {
     var result = await interface.getTraining(req.params.id)
