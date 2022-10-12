@@ -15,7 +15,7 @@
 
       <h1 class="govuk-heading-xl">Predict job description gender bias</h1>
 
-      <form class="form" action="/gender-bias" method="post">
+      <form class="form" action="/gender-bias-results" method="post">
 
         {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
@@ -33,6 +33,18 @@
         <button class="govuk-button" data-module="govuk-button">Submit</button>
 
       </form>
+      {% if biasInfo == "Could not return the gender bias. Please try again." %}
+      {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "Could not predict gender bias at this moment. Please try again."
+          }
+        ]
+      }) }}
+      {% endif %}
       {% if biasInfo|length %}
       <body>
         <table class="govuk-table">
