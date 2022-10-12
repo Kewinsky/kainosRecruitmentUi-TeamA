@@ -20,37 +20,37 @@ Job Roles – GOV.UK Prototype Kit
         <p>Please see below for the list of job Roles</p>
         <table class="govuk-table">
             <tbody class="govuk-table__body">
-            <th scope="row" class="govuk-table__header">Job Roles</th>
-            <th scope="row" class="govuk-table__header">Band Level</th>
-            <th scope="row" class="govuk-table__header">Capability</th>
+            <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Job Roles</th>
+            <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Band Level</th>
+            <th scope="row" class="govuk-table__header" style="padding: 0 50px;" >Capability</th>
             <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Responsibility</th>
-            <th scope="row" class="govuk-table__header">Edit Job Role </th>
+            <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Edit Job Role </th>
             {% for job in jobRoles %}
             <tr class="govuk-table__row" >
-                <td class="govuk-table__cell" style="padding: 10px 50px;">
-                    <a class="govuk-footer__link" style="white-space: nowrap;" href="{{ url }}job-specification/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
+                <td class="govuk-table__cell" style="padding: 5px 50px;">
+                    <a class="govuk-footer__link" href="{{ url }}job-specification/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
                         {{ job.roleName }}
                     </a>
                 </td>
                 {% set bandID = job.bandID %}
-                <td class="govuk-table__cell" style="padding: 10px 50px;">
+                <td class="govuk-table__cell"  style="padding: 5px 50px;">
                     <a class="govuk-footer__link" href="{{ url }}view-band-info/{{ job.bandID }}" id="bandID-{{ job.jobRoleId  }}">
                         {{ bandLevel[bandID-1].bandName }}
                     </a>
                 </td>
                 {% set capabilityID = job.capabilityID %}
-                <td class="govuk-table__cell" style="padding: 10px 50px;">
+                <td class="govuk-table__cell"  style="padding: 5px 50px;">
                     <p class="gov_role_band" id = "capabilityID-{{ job.jobRoleId }}">
                        <a class="govuk-footer__link" href="{{ url }}view-matrix/{{job.capabilityID}}">
                         {{ capabilities[capabilityID-1].capabilityName }}</a>
                     </p>
                 </td>
-                <td class="govuk-table__cell"  style="padding: 10px">
+                <td class="govuk-table__cell"  style="padding: 5px 50px;">
                     <p class="gov_role_band" id = "responsibilityID-{{ job.jobRoleId }}">
                         {{ job.responsibility }}
                     </p>
                 </td>
-                <td class="govuk-table__cell">
+                <td class="govuk-table__cell"  style="padding: 5px 50px;">
                     <a class="govuk-footer__link" href="{{ url }}edit-job-role/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
                         Edit {{ job.roleName }}
                     </a>

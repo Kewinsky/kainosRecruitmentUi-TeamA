@@ -148,14 +148,14 @@ exports.createJobWithoutLink = async(id,jobRole) => {
         console.log(jobRole)
         const response = await axios.put(Url+'editJobRole/'+id, jobRole)
 
-        return response.data
+        return response.status
         }
         catch(e){
             if(e.response.status==400){
                 return new Error('Invalid data')
             }
             if(e.response.status==500){
-                return new Error('Could not create employee')
+                return new Error('Could not edit employee')
             }
             else{
                 return new Error("went wrong")
