@@ -14,7 +14,7 @@ db.connect((error) => {
     console.log("Connected to the database successfully!")
 });
 
-router.post('/login', async (req, res) => {
+router.post('/auth', async (req, res) => {
     const { email, password } = req.body;
 
     const user = db.query("SELECT * FROM team_A.users WHERE email = ?", [email], function(error,results,fields){
@@ -22,34 +22,38 @@ router.post('/login', async (req, res) => {
 
             const data = JSON.parse(JSON.stringify(results))
             if (data[0].email != email || data[0].password != password) {
-                res.status(400).json({ error: "Invalid email or password!" });
-            }
-            else {
+                return res.status(400).json({status: "error", error: "Invalid email or password!"})
+            } else {
                 const token = jwt.sign({ email: email, password: password }, process.env.JWT_SECRET)
-                return res
+                res
                     .cookie("access_token", token, {
                         httpOnly: true,
                         secure: process.env.NODE_ENV === "production",})
                     .status(200)
-                    .json({ message: "Logged in successfully" });
+                    .json({status: "success", message: "Logged in successfully" })
             }
 
         }
         else {
-            return res.status(400).json({ error: "User does not exist" });
+            return res.status(400).json({status: "error", error: "User does not exist" });
         }
     });
 });
 
 router.get('/profile', auth, (req, res) => {
-    return res.json({  email: req.email, password: req.password });
+    if(req.email){
+        res.json({  email: req.email, password: req.password });
+    }
+    else{
+        res.redirect("authorization");
+    }
 });
 
 router.get("/logout", auth, (req, res) => {
 return res
     .clearCookie("access_token")
     .status(200)
-    .json({ message: "Logged out successfully " });
+    .render('logout')
 });
 
 router.get('/job-specification/:id', async (req, res) => {
