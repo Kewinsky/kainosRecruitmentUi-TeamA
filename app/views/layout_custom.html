@@ -77,11 +77,6 @@ Kainos Employee System
                             Login
                         </a>
                     </li>
-                    <li class="govuk-header__navigation-item">
-                        <a class="govuk-header__link" href="/profile">
-                            Profile
-                        </a>
-                    </li>
                     <li id="logoutBtn" class="govuk-header__navigation-item" style="display: block;">
                         <a class="govuk-header__link" href="logout.html">
                             Logout
@@ -121,16 +116,15 @@ Kainos Employee System
 </footer>
 
 <script>
-    // const cookie = document.cookie.length;
-    // console.log(cookie)
-    // if (cookie) {
-    //     document.getElementById('loginBtn').style.display = 'none'
-    //     document.getElementById('logoutBtn').style.display = 'block'
-    // }
-    // else{
-    //     document.getElementById('loginBtn').style.display = 'block'
-    //     document.getElementById('logoutBtn').style.display = 'none'
-    // }
+    const cookie = document.cookie.length;
+    if (cookie > 0) {
+        document.getElementById('loginBtn').style.display = 'none'
+        document.getElementById('logoutBtn').style.display = 'block'
+    }
+    else{
+        document.getElementById('loginBtn').style.display = 'block'
+        document.getElementById('logoutBtn').style.display = 'none'
+    }
 </script>
 
 {% endblock %}

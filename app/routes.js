@@ -19,20 +19,18 @@ router.post('/auth', async (req, res) => {
 
     const user = db.query("SELECT * FROM team_A.users WHERE email = ?", [email], function(error,results,fields){
         if(results.length > 0){
-
             const data = JSON.parse(JSON.stringify(results))
             if (data[0].email != email || data[0].password != password) {
                 return res.status(400).json({status: "error", error: "Invalid email or password!"})
             } else {
-                const token = jwt.sign({ email: email, password: password }, process.env.JWT_SECRET)
+                const token = jwt.sign({ email: email, password: password }, process.env.JWT_SECRET);
                 res
                     .cookie("access_token", token, {
-                        httpOnly: true,
-                        secure: process.env.NODE_ENV === "production",})
+                        // httpOnly: true,
+                    })
                     .status(200)
                     .json({status: "success", message: "Logged in successfully" })
             }
-
         }
         else {
             return res.status(400).json({status: "error", error: "User does not exist" });
@@ -58,7 +56,7 @@ router.get('/job-specification/:id', async (req, res) => {
         url:Url 
     })});
 
-router.get('/view-jobRoles', async (req, res) => {
+router.get('/view-jobRoles', auth, async (req, res) => {
     var result = await interface.getJobRoles()
     var response = await interface.getBandLevelNames()
     var results = await interface.getCapabilitiesNames()
