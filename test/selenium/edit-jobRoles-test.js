@@ -36,6 +36,23 @@ describe('UI Testing for Job Roles Webpage with added functionality (editing job
         await driver.quit();
     })
 
+    it('Data Analyst should now be displayed in the Engineering Role of Matrix page rather than AI & Data', async() => {
+        var driver = new webdriver.Builder()
+                   .withCapabilities(webdriver.Capabilities.chrome())
+                   .build();
+
+        // Open job roles webpage
+        driver.get(jobRoleUrl);
+
+        // Click on the new capability that Data Analyst has been assigned to
+        await driver.findElement(By.id('capabilityID-1')).click()
+        // Expect the capability that Data Analyst belongs to, to have changed to Engineering
+        expect(await driver.findElement(By.linkText('Data Analyst')).getText()).to.equal('Data Analyst');
+
+        // Close browser
+        await driver.quit();
+    })
+
     it('Change Data Analyst back to  the original state', async() => {
         var driver = new webdriver.Builder()
                    .withCapabilities(webdriver.Capabilities.chrome())
