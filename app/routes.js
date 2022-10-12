@@ -20,7 +20,6 @@ router.get('/view-jobRoles', async (req, res) => {
         url:Url
     })});
 
-
 router.get('/view-jobRoles-Edit', async (req, res) => {
     var result = await interface.getJobRoles()
     var response = await interface.getBandLevelNames()
@@ -56,16 +55,9 @@ router.get('/view-matrix/:id', async (req, res) => {
 
 router.get('/edit-job-role/:id',async(req,res) => {
     var result = await interface.getJobRole(req.params.id)
-    console.log(result)
        var cap;
-       var capCheck1=false;
-       var capCheck2=false;
-       var bandCheck1=false;
-       var bandCheck2=false;
-       var bandCheck3=false;
-       var bandCheck4=false;
-       var bandCheck5=false;
-       var bandCheck6=false;
+       var capCheck,capCheck2=false;
+       var bandCheck1,bandCheck2,bandCheck3,bandCheck4,bandCheck5,bandCheck6=false;
        var band;
        var id = req.params.id
        if(result.capabilityID===1){
@@ -170,8 +162,6 @@ router.post('/edit-job-role/:id',async(req,res) => {
                     url:Url,
                     errormessage
                 })
-
-
     }
 
 });

@@ -54,6 +54,4 @@ describe('interface',function(){
                    expect(error.message).to.equal('went wrong')
               })
     })
-
-
 })

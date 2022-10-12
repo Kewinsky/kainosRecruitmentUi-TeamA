@@ -144,8 +144,6 @@ exports.getBandLevelNames = async () => {
 
 exports.createJobWithoutLink = async(id,jobRole) => {
         try{
-        console.log("I am in the interface")
-        console.log(jobRole)
         const response = await axios.put(Url+'editJobRole/'+id, jobRole)
 
         return response.status
