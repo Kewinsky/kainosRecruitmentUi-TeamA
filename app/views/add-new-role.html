@@ -48,30 +48,84 @@ Add a Job Role
                     </label>
                 </h1>
                 <input class="govuk-input" id="link" name="link" value="{{link}}" type="text" required>
-                <div class="govuk-form-group">
-                    <h1 class="govuk-label-wrapper">
-                        <label class="govuk-label govuk-label--l" for="bandID">
-                            Choose Band:
-                        </label>
-                    </h1>
-                    <select class="govuk-select" id="bandID" name="bandID">
-                        {% for bandID in band %}
-                        <option value="{{loop.index}}" selected>{{bandID}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="govuk-form-group">
-                    <h1 class="govuk-label-wrapper">
-                        <label class="govuk-label govuk-label--l" for="capabilityID">
-                            Choose Capability:
-                        </label>
-                    </h1>
-                    <select class="govuk-select" id="capabilityID" name="capabilityID">
-                        {% for capabilityID in capability %}
-                        <option value="{{loop.index}}" selected>{{capabilityID}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+
+                {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+                {{ govukRadios({
+                name: "bandID",
+                fieldset: {
+                legend: {
+                text: "Band",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+                },
+                hint: {
+                text: " The current Band  is "+ band
+                },
+                items: [
+                {
+                value: "1",
+                text: "Principal",
+                checked:bandCheck1
+                },
+                {
+                value: "2",
+                text: "Manager",
+                checked:bandCheck2
+                },
+                {
+                value: "3",
+                text: "Consultant",
+                checked:bandCheck3
+                },
+                {
+                value: "4",
+                text: "Senior Associate",
+                checked:bandCheck4
+                },
+                {
+                value: "5",
+                text: "Associate",
+                checked:bandCheck5
+                },
+                {
+                value: "6",
+                text: "Trainee",
+                checked:bandCheck6
+                }
+                ]
+                }) }}
+
+                {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+                {{ govukRadios({
+                name: "capabilityID",
+                fieldset: {
+                legend: {
+                text: "Capability",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+                },
+                hint: {
+                text: " The current capability  is "+cap
+                },
+                items: [
+                {
+                value: "1",
+                text: "Data & AI",
+                checked:capCheck1
+                },
+                {
+                value: "2",
+                text: "Engineering",
+                checked:capCheck2
+
+                }
+                ]
+                }) }}
+
                 <h1 class="govuk-label-wrapper">
                     <label class="govuk-label govuk-label--l" for="responsibility">
                         Responsibility
