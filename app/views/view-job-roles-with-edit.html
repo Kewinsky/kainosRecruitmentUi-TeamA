@@ -23,7 +23,8 @@ href: url+"view-jobRoles"
     {{ govukButton({
     text: "Stop Editing",
     href: url+"view-jobRoles",
-    isStartButton: true
+    isStartButton: true,
+    id:"Stop-edit"
     }) }}
     <table class="govuk-table">
       <tbody class="govuk-table__body">
@@ -58,7 +59,7 @@ href: url+"view-jobRoles"
           </p>
         </td>
         <td class="govuk-table__cell"  style="padding: 5px 50px;">
-          <a class="govuk-footer__link" href="{{ url }}edit-job-role/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
+          <a class="govuk-footer__link" colour = "darkblue" href="{{ url }}edit-job-role/{{ job.jobRoleId }}" id="jobEditRoleID-{{ job.jobRoleId }}">
             Edit
           </a>
         </td>
