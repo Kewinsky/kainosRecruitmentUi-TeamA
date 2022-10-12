@@ -60,7 +60,7 @@ describe('UI Testing for the matrix of roles page', () => {
        await driver.quit();
     })
 
-    it('redirect to job specification when user click on the job roles display in the Data & AI capability matrix of roles', async() => {
+    it('Redirect to job specification when user click on the job roles display in the Data & AI capability matrix of roles', async() => {
        var driver = new webdriver.Builder()
            .withCapabilities(webdriver.Capabilities.chrome())
            .build();
@@ -77,7 +77,7 @@ describe('UI Testing for the matrix of roles page', () => {
        await driver.quit();
     })
 
-    it('redirect to job specification when user click on the job roles display in the Engineering capability matrix of roles', async() => {
+    it('Redirect to job specification when user click on the job roles display in the Engineering capability matrix of roles', async() => {
        var driver = new webdriver.Builder()
            .withCapabilities(webdriver.Capabilities.chrome())
            .build();
@@ -94,7 +94,7 @@ describe('UI Testing for the matrix of roles page', () => {
        await driver.quit();
     })
 
-    it('redirect to matrix of roles when user click on the capability text', async() => {
+    it('Redirect to matrix of roles when user click on the capability text', async() => {
        var driver = new webdriver.Builder()
            .withCapabilities(webdriver.Capabilities.chrome())
            .build();

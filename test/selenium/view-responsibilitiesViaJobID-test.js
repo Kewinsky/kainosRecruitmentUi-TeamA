@@ -13,7 +13,7 @@ const expect = chai.expect;
 var baseUrl = 'http://localhost:3000';
 var jobRoleUrl = baseUrl.concat('/view-jobRoles');
 
-describe('UI Testing for Job Roles Webpage with added functionality', () => {
+describe('UI Testing for Job Roles Webpage with added functionality (responsibility)', () => {
     it('Should have an additional column for the responsibility data', async() => {
         var driver = new webdriver.Builder()
                    .withCapabilities(webdriver.Capabilities.chrome())
