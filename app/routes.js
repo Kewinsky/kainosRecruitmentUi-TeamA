@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const interface = require('./interface.js')
-const AddJobRoleValidator = require ('./validator/AddJobRoleValidator.js');
-
+const AddJobRoleValidator = require('./validator/AddJobRoleValidator.js');
 var Url = process.env.LOCAL_URL
+
 router.get('/job-specification/:id', async (req, res) => {
     var result = await interface.getJobRole(req.params.id)
     res.render('view-specification.html', {

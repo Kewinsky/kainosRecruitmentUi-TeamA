@@ -167,7 +167,7 @@ exports.addJobRole = async function (jobRole){
             throw new Error("Not handled error had occurred")
         }
     }
-
+}
 exports.createJobWithoutLink = async(id,jobRole) => {
         try{
         const response = await axios.put(Url+'editJobRole/'+id, jobRole)
@@ -185,5 +185,4 @@ exports.createJobWithoutLink = async(id,jobRole) => {
                 return new Error("went wrong")
             }
         }
-}
-
+    }
