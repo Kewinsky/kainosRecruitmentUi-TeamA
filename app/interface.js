@@ -142,6 +142,33 @@ exports.getBandLevelNames = async () => {
     }
 }
 
+exports.addJobRole = async function (jobRole){
+    try{
+        console.log("I am in the interface")
+        console.log(jobRole)
+        const response = await axios.post(Url+'add-job-roles',jobRole)
+        return response.status
+    }catch(e){
+        if(e.response === undefined){
+            throw new Error("Undefined error has occurred")
+        }
+        else if(e.response.status === 500){
+            if(e.response.data === undefined){
+                throw new Error("An error occurred while executing this request")
+            }
+        }
+        else if(e.response.status === 404 || e.response.status === 400){
+            throw new Error("Bad request")
+        }
+        else if(e.response.status === 503){
+            throw new Error("Server is unavaliable")
+        }
+        else{
+            throw new Error("Not handled error had occurred")
+        }
+    }
+}
+
 exports.getUserByEmail = async (email) => {
     try {
         const viewUser = await axios.get(Url + 'user/' + email)
@@ -186,4 +213,5 @@ exports.createJobWithoutLink = async(id,jobRole) => {
                 return new Error("went wrong")
             }
         }
-}
+    }
+

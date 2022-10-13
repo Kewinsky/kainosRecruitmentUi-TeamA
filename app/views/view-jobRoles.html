@@ -18,6 +18,13 @@ Job Roles
             <span id="jobRolesTitle" class="govuk-caption-xl">Job Roles Report</span>
         </h1>{{releaseVersion | log }}
         <p>Please see below for the list of job Roles</p>
+
+        <a href="add-new-role.html">
+            <button colour="#009639" id="jobSpecBtn" class="govuk-button" data-module="govuk-button">
+               Add new role
+            </button>
+        </a>
+
         {% from "govuk/components/button/macro.njk" import govukButton %}
 
         {{ govukButton({
@@ -48,8 +55,8 @@ Job Roles
                 {% set capabilityID = job.capabilityID %}
                 <td class="govuk-table__cell"  style="padding: 5px 50px;">
                     <p class="gov_role_band" id = "capabilityID-{{ job.jobRoleId }}">
-                       <a class="govuk-footer__link" href="{{ url }}view-matrix/{{job.capabilityID}}">
-                        {{ capabilities[capabilityID-1].capabilityName }}</a>
+                        <a class="govuk-footer__link" href="{{ url }}view-matrix/{{job.capabilityID}}">
+                            {{ capabilities[capabilityID-1].capabilityName }}</a>
                     </p>
                 </td>
                 <td class="govuk-table__cell"  style="padding: 5px 50px;">

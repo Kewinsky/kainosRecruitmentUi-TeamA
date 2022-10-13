@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Url = process.env.LOCAL_URL
 const interface = require('./interface.js')
+const AddJobRoleValidator = require('./validator/AddJobRoleValidator.js');
+var Url = process.env.LOCAL_URL
+
 const db = require('./db-config.js')
 const auth = require("./authorization.js");
 const jwt = require('jsonwebtoken')
@@ -101,6 +104,26 @@ router.get('/view-matrix/:id', async (req, res) => {
         capabilities: capabilities,
         url:Url
     })});
+
+router.post('/add-job-roles', async (req, res) => {
+    try {
+        if(AddJobRoleValidator.validateUserInput(req.body)){
+            const jobRole = req.body
+            console.log(jobRole.bandID)
+            jobRole.bandID = parseInt(jobRole.bandID)
+            jobRole.capabilityID = parseInt(jobRole.capabilityID)
+            data = await interface.addJobRole(req.body)
+            let success = "New job role added"
+            res.locals.success = success
+            res.render('add-new-role', {
+                url:Url
+            })
+        }
+    } catch (e) {
+        res.locals.errormessage = e.message
+        res.render('add-new-role', req.body)
+    }
+});
 
 router.get('/edit-job-role/:id',async(req,res) => {
     var result = await interface.getJobRole(req.params.id)
@@ -218,3 +241,4 @@ router.post('/edit-job-role/:id',async(req,res) => {
 });
 
 module.exports = router
+
