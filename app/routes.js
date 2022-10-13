@@ -53,6 +53,7 @@ router.get('/job-specification/:id', async (req, res) => {
         url:Url 
     })});
 
+
 router.get('/view-jobRoles', auth, async (req, res) => {
     var result = await interface.getJobRoles()
     var response = await interface.getBandLevelNames()
@@ -102,6 +103,25 @@ router.get('/view-matrix/:id', async (req, res) => {
         capabilities: capabilities,
         url:Url
     })});
+
+
+
+router.get('/view-jobRoles-delete', async (req, res) => {
+    var result = await interface.getJobRoles()
+    var response = await interface.getBandLevelNames()
+    var results = await interface.getCapabilitiesNames()
+    res.render('view-jobRolesDelete', {
+        jobRoles: result,
+        bandLevel: response,
+        capabilities: results,
+        url:Url
+    })});
+
+router.get('/roles-to-delete', async (req, res) => {
+    var output = await interface.deleteJobRoles(req.session.data["id"])
+    console.log(req.session.data)
+    res.redirect('/view-jobRoles')
+    });
 
 router.post('/add-job-roles', async (req, res) => {
     try {
@@ -239,4 +259,3 @@ router.post('/edit-job-role/:id',async(req,res) => {
 });
 
 module.exports = router
-

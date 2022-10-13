@@ -11,6 +11,9 @@ Job Roles
     href: url+"index"
 }) }}
 
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
@@ -19,6 +22,16 @@ Job Roles
         </h1>{{releaseVersion | log }}
         <p>Please see below for the list of job Roles</p>
 
+        <button class="govuk-button" data-module="govuk-button" onclick="myFunction()">
+            Delete roles
+          </button>
+
+          <script>
+            function myFunction() {
+              location.href = "view-jobRoles-delete";
+            }
+            </script>
+          
         <a href="add-new-role.html">
             <button colour="#009639" id="jobSpecBtn" class="govuk-button" data-module="govuk-button">
                Add new role
@@ -33,6 +46,7 @@ Job Roles
         isStartButton: true,
         id:"edit"
         }) }}
+
         <table class="govuk-table">
             <tbody class="govuk-table__body">
             <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Job Roles</th>

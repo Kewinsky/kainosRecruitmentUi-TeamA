@@ -142,6 +142,19 @@ exports.getBandLevelNames = async () => {
     }
 }
 
+exports.deleteJobRoles = async (idList) => {
+
+    try {
+        const delJobRoles = await axios.delete(Url + 'delete-job-roles', { data: idList } )
+        console.log(delJobRoles)
+        return delJobRoles.status;
+
+    }
+    catch (e) {
+        return new Error('Could not delete these Jobs')
+    }
+}
+
 exports.addJobRole = async function (jobRole){
     try{
         console.log("I am in the interface")
@@ -214,4 +227,3 @@ exports.createJobWithoutLink = async(id,jobRole) => {
             }
         }
     }
-
