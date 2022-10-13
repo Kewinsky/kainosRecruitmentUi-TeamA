@@ -56,7 +56,7 @@ router.get('/view-matrix/:id', async (req, res) => {
 router.get('/edit-job-role/:id',async(req,res) => {
     var result = await interface.getJobRole(req.params.id)
        var cap;
-       var capCheck,capCheck2=false;
+       var capCheck1,capCheck2=false;
        var bandCheck1,bandCheck2,bandCheck3,bandCheck4,bandCheck5,bandCheck6=false;
        var band;
        var id = req.params.id
