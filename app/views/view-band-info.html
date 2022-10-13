@@ -1,7 +1,7 @@
 {% extends "layout_custom.html" %}
 
 {% block pageTitle %}
-Band Information – GOV.UK Prototype Kit
+Band Information
 {% endblock %}
 
 {% block content %}
@@ -44,6 +44,7 @@ Band Information – GOV.UK Prototype Kit
             <th scope="row" class="govuk-table__header">Date</th>
             <th scope="row" class="govuk-table__header">Hours</th>
             <th scope="row" class="govuk-table__header">Registration</th>
+            <th scope="row" class="govuk-table__header">Category</th>
             {% for x in range (0, training|length) %}
             <tr class="govuk-table__row" id="TrainingId-{{ training[x].trainingDate }}">
                 <td class="govuk-table__cell" id="Training-{{ training[x].trainingDate }}">
@@ -57,6 +58,9 @@ Band Information – GOV.UK Prototype Kit
                 </td>
                 <td class="govuk-table__cell">
                     {{ training[x].registration }}
+                </td>
+                <td id="CategoryID-{{ training[x].trainingDate }}" class="govuk-table__cell">
+                    {{ training[x].category }}
                 </td>
             </tr>
             {% endfor %}

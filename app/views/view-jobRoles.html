@@ -1,7 +1,7 @@
 {% extends "layout_custom.html" %}
 
 {% block pageTitle %}
-Job Roles – GOV.UK Prototype Kit
+Job Roles
 {% endblock %}
 
 {% block content %}
@@ -18,29 +18,50 @@ Job Roles – GOV.UK Prototype Kit
             <span id="jobRolesTitle" class="govuk-caption-xl">Job Roles Report</span>
         </h1>{{releaseVersion | log }}
         <p>Please see below for the list of job Roles</p>
+
+        <a href="add-new-role.html">
+            <button colour="#009639" id="jobSpecBtn" class="govuk-button" data-module="govuk-button">
+               Add new role
+            </button>
+        </a>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+        text: "Edit",
+        href: url+"view-jobRoles-Edit",
+        isStartButton: true,
+        id:"edit"
+        }) }}
         <table class="govuk-table">
             <tbody class="govuk-table__body">
-            <th scope="row" class="govuk-table__header">Job Roles</th>
-            <th scope="row" class="govuk-table__header">Band Level</th>
-            <th scope="row" class="govuk-table__header">Capability</th>
+            <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Job Roles</th>
+            <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Band Level</th>
+            <th scope="row" class="govuk-table__header" style="padding: 0 50px;" >Capability</th>
+            <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Responsibility</th>
             {% for job in jobRoles %}
-            <tr class="govuk-table__row">
-                <td class="govuk-table__cell">
+            <tr class="govuk-table__row" >
+                <td class="govuk-table__cell" style="padding: 5px 50px;">
                     <a class="govuk-footer__link" href="{{ url }}job-specification/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
                         {{ job.roleName }}
                     </a>
                 </td>
                 {% set bandID = job.bandID %}
-                <td class="govuk-table__cell">
+                <td class="govuk-table__cell"  style="padding: 5px 50px;">
                     <a class="govuk-footer__link" href="{{ url }}view-band-info/{{ job.bandID }}" id="bandID-{{ job.jobRoleId  }}">
                         {{ bandLevel[bandID-1].bandName }}
                     </a>
                 </td>
                 {% set capabilityID = job.capabilityID %}
-                <td class="govuk-table__cell">
+                <td class="govuk-table__cell"  style="padding: 5px 50px;">
                     <p class="gov_role_band" id = "capabilityID-{{ job.jobRoleId }}">
-                       <a class="govuk-footer__link" href="http://localhost:3000/view-matrix/{{job.capabilityID}}"> 
-                        {{ capabilities[capabilityID-1].capabilityName }}</a>
+                        <a class="govuk-footer__link" href="{{ url }}view-matrix/{{job.capabilityID}}">
+                            {{ capabilities[capabilityID-1].capabilityName }}</a>
+                    </p>
+                </td>
+                <td class="govuk-table__cell"  style="padding: 5px 50px;">
+                    <p class="gov_role_band" id = "responsibilityID-{{ job.jobRoleId }}">
+                        {{ job.responsibility }}
                     </p>
                 </td>
             </tr>

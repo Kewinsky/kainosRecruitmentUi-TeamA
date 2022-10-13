@@ -39,8 +39,9 @@ describe('UI Testing for Band Level', () => {
         // Compare expected role name with actual role name for the first entry
         expect(await driver.findElement(By.id('jobSpecRoleID-1')).getText()).to.equal('Data Analyst');
         // Compare expected band level with actual band level for the first entry
-        expect(await driver.findElement(By.id('bandID-1')).getText()).to.equal('Associate');
 
+        expect(await driver.findElement(By.id('bandID-1')).getText()).to.equal('Associate');
+        
         // Close browser
         await driver.quit();
    })

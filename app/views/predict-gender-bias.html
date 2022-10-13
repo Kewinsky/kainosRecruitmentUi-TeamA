@@ -1,0 +1,73 @@
+{% extends "layout_custom.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl" id="genderBiasTitle">Predict job description gender bias</h1>
+
+      <form class="form" action="/gender-bias-result" method="post">
+
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        {{ govukTextarea({
+        name: "gender-bias",
+        id: "gender-bias-textbox",
+        label: {
+        text: "Please enter job description here",
+        classes: "govuk-label--l",
+        isPageHeading: true
+        },
+        value: data['gender-bias']
+        }) }}
+
+        <button class="govuk-button" data-module="govuk-button" id="submit">Submit</button>
+
+      </form>
+      {% if biasInfo == "Error: Could not return the gender bias. Please try again." %}
+      {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "Could not predict gender bias at this moment. Please try again."
+          }
+        ]
+      }) }}
+      {% endif %}
+      {% if biasInfo|length %}
+      <body>
+        <table class="govuk-table">
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header" id="biased%Header">Percentage of biased words in text</th>
+              <td id="biased%Text" class="govuk-table__cell">{{ biasInfo.percentage_bias }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Detected male-coded words</th>
+              <td id="maleBiasedText" class="govuk-table__cell">{{ biasInfo.biased_words_male }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Detected female-coded words</th>
+              <td id="femaleBiasedText" class="govuk-table__cell">{{ biasInfo.biased_words_female }}</td>
+            </tr>
+          </tbody>
+      </table>
+      {% endif %}
+
+      </body>
+
+    </div>
+  </div>
+
+{% endblock %}
