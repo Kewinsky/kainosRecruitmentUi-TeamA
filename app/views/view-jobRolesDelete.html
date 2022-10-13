@@ -1,0 +1,99 @@
+{% extends "layout_custom.html" %}
+
+{% block pageTitle %}
+Job Roles – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+{{ govukBackLink({
+    text: "Back",
+    href: url+"index"
+}) }}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            Kainos Employee System
+            <span id="jobRolesTitle" class="govuk-caption-xl">Job Roles Report</span>
+        </h1>{{releaseVersion | log }}
+        <p>Please see below for the list of job Roles</p>
+        {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+        {{ govukWarningText({
+          text: "You might delete required job roles",
+          iconFallbackText: "Warning"
+        }) }}
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        <form name="deleteRoles" class="form" method="post" action="javascript:void(0);"> 
+            <button class="govuk-button govuk-button--warning" data-module="govuk-button" onclick="return popupFunction()" >
+                Delete roles
+              </button>
+              <script>
+                function popupFunction(form) {
+                    var result = confirm("Are you sure you want to delete these roles?");
+                    if (result) {
+                        document.deleteRoles.action = "roles-to-delete";
+                    }
+                }
+              </script> 
+
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+            <th scope="row" class="govuk-table__header">Delete</th>
+            <th scope="row" class="govuk-table__header">Job Roles</th>
+            <th scope="row" class="govuk-table__header">Band Level</th>
+            <th scope="row" class="govuk-table__header">Capability</th>
+            {% for job in jobRoles %}
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+                    {{ govukCheckboxes({
+                    name: "id",
+                    idPrefix: "DeleteRole-" + job.jobRoleId,
+                    classes: "govuk-checkboxes--small",
+                    fieldset: {
+                        legend: {
+                        text: "",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                        value: job.jobRoleId,
+                        text: " "
+                        }
+                    ]
+                    }) }}
+                </td>
+                <td class="govuk-table__cell">
+                    <a class="govuk-footer__link" href="{{ url }}job-specification/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
+                        {{ job.roleName }}
+                    </a>
+                </td>
+                {% set bandID = job.bandID %}
+                <td class="govuk-table__cell">
+                    <a class="govuk-footer__link" href="{{ url }}view-band-info/{{ job.bandID }}" id="bandID-{{ job.jobRoleId  }}">
+                        {{ bandLevel[bandID-1].bandName }}
+                    </a>
+                </td>
+                {% set capabilityID = job.capabilityID %}
+                <td class="govuk-table__cell">
+                    <p class="gov_role_band" id = "capabilityID-{{ job.jobRoleId }}">
+                       <a class="govuk-footer__link" href="http://localhost:3000/view-matrix/{{job.capabilityID}}"> 
+                        {{ capabilities[capabilityID-1].capabilityName }}</a>
+                    </p>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </form>
+    </div>
+</div>
+
+{% endblock %}
