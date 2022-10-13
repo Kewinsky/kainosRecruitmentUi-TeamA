@@ -37,6 +37,3 @@ module.exports.validateRoleName = function (roleName) {
     var reg = /^[A-Za-z\s]*$/;
     return roleName.match(reg)
 }
-
-
-
