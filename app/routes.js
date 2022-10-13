@@ -3,8 +3,6 @@ const router = express.Router()
 const Url = process.env.LOCAL_URL
 const interface = require('./interface.js')
 const AddJobRoleValidator = require('./validator/AddJobRoleValidator.js');
-var Url = process.env.LOCAL_URL
-
 const db = require('./db-config.js')
 const auth = require("./authorization.js");
 const jwt = require('jsonwebtoken')
