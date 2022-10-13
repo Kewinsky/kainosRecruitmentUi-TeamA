@@ -1,0 +1,151 @@
+{% extends "layout_custom.html" %}
+
+{% block pageTitle %}
+Add a Job Role
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="/view-jobRoles.html">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Add a Job Role</h1>
+
+        {% if success %}
+        <div id="succes" class="govuk-error-message reg-success">{{ success }}</div>
+        {% endif%}
+
+        {% if (errormessage == "Role name can only consist of letters") or (errormessage == "Role name is too short") or (errormessage == "Role name is too long") %}
+        <div id="regErrorname" class="govuk-error-message">{{ errormessage }}</div>
+        {% endif %}
+
+        <form class="form" action="/add-job-roles" method="post">
+            <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--l" for="roleName" style="padding: 0 0 5px;">
+                        Role Name
+                    </label>
+                </h1>
+                <input class="govuk-input" id="roleName" name="roleName" value="{{roleName}}" type="text" required>
+
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--l" for="specification" style="padding: 30px 0 5px;">
+                        Specification
+                    </label>
+                </h1>
+                {% if errormessage == ("Role specification is too short" or "Role specification is too long") %}
+                <div id="regErrorspec" class="govuk-error-message">{{ errormessage }}</div>
+                {% endif %}
+                <input class="govuk-input" id="specification" name="specification" value="{{specification}}" type="text" required>
+
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--l" for="link" style="padding: 30px 0 5px;">
+                    Link
+                    </label>
+                </h1>
+                {% if errormessage == ("URL too long" or "URL too short") %}
+                <div id="regErrorlink" class="govuk-error-message">{{ errormessage }}</div>
+                {% endif %}
+                <input class="govuk-input" id="link" name="link" value="{{link}}" type="text" required>
+                <br><br>
+                {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+                {{ govukRadios({
+                name: "bandID",
+                fieldset: {
+                legend: {
+                text: "Band",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+                },
+                hint: {
+                text: " The current Band  is "+ band
+                },
+                items: [
+                {
+                value: "1",
+                text: "Principal",
+                checked:true
+                },
+                {
+                value: "2",
+                text: "Manager",
+                checked:bandCheck2
+                },
+                {
+                value: "3",
+                text: "Consultant",
+                checked:bandCheck3
+                },
+                {
+                value: "4",
+                text: "Senior Associate",
+                checked:bandCheck4
+                },
+                {
+                value: "5",
+                text: "Associate",
+                checked:bandCheck5
+                },
+                {
+                value: "6",
+                text: "Trainee",
+                checked:bandCheck6
+                }
+                ]
+                }) }}
+
+                {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+                {{ govukRadios({
+                name: "capabilityID",
+                fieldset: {
+                legend: {
+                text: "Capability",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+                },
+                hint: {
+                text: " The current capability  is "+cap
+                },
+                items: [
+                {
+                value: "2",
+                text: "Data & AI",
+                checked:true
+                },
+                {
+                value: "1",
+                text: "Engineering",
+                checked:capCheck2
+
+                }
+                ]
+                }) }}
+
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--l" for="responsibility" style="padding: 30px 0 5px;">
+                        Responsibility
+                    </label>
+                </h1>
+                {% if errormessage == ("Responsibility is too short" or "Responsibility is too long") %}
+                <div id="regErrorresp" class="govuk-error-message">{{ errormessage }}</div>
+                {% endif %}
+                <input class="govuk-input" id="responsibility" name="responsibility" value="{{responsibility}}" type="text" required>
+
+
+                <br><br><br>
+                <button class="govuk-button" type = "submit" id="submit">Add new Job Role</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

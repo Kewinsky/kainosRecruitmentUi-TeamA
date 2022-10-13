@@ -28,5 +28,21 @@ describe('UI Testing for the index page', () => {
        // Close browser
        await driver.quit();
    })
+
+  it('Should allow the user to click on gender bias on job description webpage', async() => {
+      var driver = new webdriver.Builder()
+          .withCapabilities(webdriver.Capabilities.chrome())
+          .build();
+
+      // Home page
+      driver.get(baseUrl);
+
+      // Click on gender bias on job description page from homepage
+      await driver.findElement(By.linkText('Predict gender bias in a job description')).click()
+      expect(await driver.findElement(By.id('genderBiasTitle')).getText()).to.equal('Predict job description gender bias');
+
+      // Close browser
+      await driver.quit();
+  })
 })
 

@@ -155,3 +155,75 @@ exports.deleteJobRoles = async (idList) => {
     }
 }
 
+exports.addJobRole = async function (jobRole){
+    try{
+        console.log("I am in the interface")
+        console.log(jobRole)
+        const response = await axios.post(Url+'add-job-roles',jobRole)
+        return response.status
+    }catch(e){
+        if(e.response === undefined){
+            throw new Error("Undefined error has occurred")
+        }
+        else if(e.response.status === 500){
+            if(e.response.data === undefined){
+                throw new Error("An error occurred while executing this request")
+            }
+        }
+        else if(e.response.status === 404 || e.response.status === 400){
+            throw new Error("Bad request")
+        }
+        else if(e.response.status === 503){
+            throw new Error("Server is unavaliable")
+        }
+        else{
+            throw new Error("Not handled error had occurred")
+        }
+    }
+}
+
+exports.getUserByEmail = async (email) => {
+    try {
+        const viewUser = await axios.get(Url + 'user/' + email)
+        console.log(viewUser.data)
+        return viewUser.data;
+    }
+    catch(e) {
+        console.log(e);
+    }
+    return("Could not return user")
+}
+
+exports.getGenderBias = async (biasInput) => {
+    
+    try {
+        const genderBias = await axios.post(Url+"gender-bias", {biasInput})
+        console.log(genderBias.data)
+        return genderBias.data;
+    }
+    catch(e) {
+        return new Error("Could not return the gender bias. Please try again.")
+        console.log(e);
+
+    }
+    
+}
+
+exports.createJobWithoutLink = async(id,jobRole) => {
+        try{
+        const response = await axios.put(Url+'editJobRole/'+id, jobRole)
+
+        return response.status
+        }
+        catch(e){
+            if(e.response.status==400){
+                return new Error('Invalid data')
+            }
+            if(e.response.status==500){
+                return new Error('Could not edit employee')
+            }
+            else{
+                return new Error("went wrong")
+            }
+        }
+    }
