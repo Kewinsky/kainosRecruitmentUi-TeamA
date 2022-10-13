@@ -19,8 +19,8 @@ Add a Job Role
         <div id="succes" class="govuk-error-message reg-success">{{ success }}</div>
         {% endif%}
 
-        {% if errormessage %}
-        <div id="regError" class="govuk-error-message">{{ errormessage }}</div>
+        {% if (errormessage == "Role name can only consist of letters") or (errormessage == "Role name is too short") or (errormessage == "Role name is too long") %}
+        <div id="regErrorname" class="govuk-error-message">{{ errormessage }}</div>
         {% endif %}
 
         <form class="form" action="/add-job-roles" method="post">
@@ -37,6 +37,9 @@ Add a Job Role
                         Specification
                     </label>
                 </h1>
+                {% if errormessage == ("Role specification is too short" or "Role specification is too long") %}
+                <div id="regErrorspec" class="govuk-error-message">{{ errormessage }}</div>
+                {% endif %}
                 <input class="govuk-input" id="specification" name="specification" value="{{specification}}" type="text" required>
 
                 <h1 class="govuk-label-wrapper">
@@ -44,6 +47,9 @@ Add a Job Role
                     Link
                     </label>
                 </h1>
+                {% if errormessage == ("URL too long" or "URL too short") %}
+                <div id="regErrorlink" class="govuk-error-message">{{ errormessage }}</div>
+                {% endif %}
                 <input class="govuk-input" id="link" name="link" value="{{link}}" type="text" required>
                 <br><br>
                 {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -110,12 +116,12 @@ Add a Job Role
                 },
                 items: [
                 {
-                value: "1",
+                value: "2",
                 text: "Data & AI",
                 checked:capCheck1
                 },
                 {
-                value: "2",
+                value: "1",
                 text: "Engineering",
                 checked:capCheck2
 
@@ -128,6 +134,9 @@ Add a Job Role
                         Responsibility
                     </label>
                 </h1>
+                {% if errormessage == ("Responsibility is too short" or "Responsibility is too long") %}
+                <div id="regErrorresp" class="govuk-error-message">{{ errormessage }}</div>
+                {% endif %}
                 <input class="govuk-input" id="responsibility" name="responsibility" value="{{responsibility}}" type="text" required>
 
 

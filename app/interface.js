@@ -147,7 +147,7 @@ exports.addJobRole = async function (jobRole){
         console.log("I am in the interface")
         console.log(jobRole)
         const response = await axios.post(Url+'add-job-roles',jobRole)
-        return response.data
+        return response.status
     }catch(e){
         if(e.response === undefined){
             throw new Error("Undefined error has occurred")

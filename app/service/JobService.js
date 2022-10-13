@@ -4,6 +4,7 @@ axios.defaults.baseURL = process.env.API_URL;
 
 URL = '/api/job-roles/'
 
+
 module.exports.getJobRoles = async function () {
     try {
         const response = await axios.get(URL)
@@ -20,3 +21,4 @@ module.exports.getJobRoles = async function () {
         }
     }
 }
+

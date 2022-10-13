@@ -91,3 +91,42 @@ describe('JobService', function () {
 })
 })
 
+ describe('addJobRole', function (){
+
+  it('should return error message when error 400 occurs', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onPost('/api/add-job-roles').reply(400);
+
+    try{
+      var error = await interface.addJobRole(newRole)
+    }catch(e){
+      expect(e.message).to.equal('Bad request')
+    }
+  })
+
+  it('should return error message when error 404 occurs', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onPost('/api/add-job-roles').reply(404);
+
+    try{
+      var error = await interface.addJobRole(newRole)
+    }catch(e){
+      expect(e.message).to.equal('Bad request')
+    }
+  })
+
+  it('should return error message when unknown error occurs', async () => {
+    var mock = new MockAdapter(axios);
+
+    mock.onPost('/api/add-job-roles').reply(403);
+    try{
+      var error = await interface.addJobRole(newRole)
+    }catch(e){
+      expect(e.message).to.equal('Not handled error had occurred')
+    }
+  })
+
+})
+
