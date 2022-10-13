@@ -142,3 +142,22 @@ exports.getBandLevelNames = async () => {
     }
 }
 
+exports.createJobWithoutLink = async(id,jobRole) => {
+        try{
+        const response = await axios.put(Url+'editJobRole/'+id, jobRole)
+
+        return response.status
+        }
+        catch(e){
+            if(e.response.status==400){
+                return new Error('Invalid data')
+            }
+            if(e.response.status==500){
+                return new Error('Could not edit employee')
+            }
+            else{
+                return new Error("went wrong")
+            }
+        }
+}
+
