@@ -109,10 +109,14 @@ Kainos Employee System
 <script>
     const cookie = document.cookie.length;
     if (cookie > 0) {
+        document.getElementById('navHeader').href = 'index'
+        document.getElementById('navLogo').href = 'index'
         document.getElementById('loginBtn').style.display = 'none'
         document.getElementById('logoutBtn').style.display = 'block'
     }
     else{
+        document.getElementById('navHeader').href = ''
+        document.getElementById('navLogo').href = ''
         document.getElementById('loginBtn').style.display = 'block'
         document.getElementById('logoutBtn').style.display = 'none'
     }
