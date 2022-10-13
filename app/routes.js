@@ -60,6 +60,7 @@ router.get('/edit-job-role/:id',async(req,res) => {
        var bandCheck1,bandCheck2,bandCheck3,bandCheck4,bandCheck5,bandCheck6=false;
        var band;
        var id = req.params.id
+
        if(result.capabilityID===1){
             cap = "Data & AI"
             capCheck1=true;
@@ -125,6 +126,7 @@ router.post('/edit-job-role/:id',async(req,res) => {
             var capCheck2=false;
             var band;
             var id = req.params.id
+
             if(result.capabilityID===1){
                 cap = "Data & AI"
                 capCheck1=true;
