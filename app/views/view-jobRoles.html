@@ -22,30 +22,36 @@ Job Roles
         </h1>{{releaseVersion | log }}
         <p>Please see below for the list of job Roles</p>
 
-        <button class="govuk-button" data-module="govuk-button" onclick="myFunction()">
-            Delete roles
-          </button>
+      {{ govukButton({
+        text: "Add",
+        href: url+"add-new-role.html",
+        isStartButton: true,
+        id:"add"
+        }) }}
 
-          <script>
-            function myFunction() {
-              location.href = "view-jobRoles-delete";
-            }
-            </script>
-          
-        <a href="add-new-role.html">
-            <button colour="#009639" id="jobSpecBtn" class="govuk-button" data-module="govuk-button">
-               Add new role
-            </button>
-        </a>
-
-        {% from "govuk/components/button/macro.njk" import govukButton %}
-
-        {{ govukButton({
+      {{ govukButton({
         text: "Edit",
         href: url+"view-jobRoles-Edit",
         isStartButton: true,
         id:"edit"
         }) }}
+
+      <a href="#" onclick="myFunction()" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">  Delete
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" /></svg></a>
+
+
+          <script>
+            function myFunction() {
+              location.href = "view-jobRoles-delete";
+            }
+          </script>
+
+
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
 
         <table class="govuk-table">
             <tbody class="govuk-table__body">
