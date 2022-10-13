@@ -59,7 +59,9 @@ router.post('/add-job-roles', async (req, res) => {
     try {
         if(AddJobRoleValidator.validateUserInput(req.body)){
             const jobRole = req.body
-            console.log(jobRole)
+            console.log(jobRole.bandID)
+            jobRole.bandID = parseInt(jobRole.bandID)
+            jobRole.capabilityID = parseInt(jobRole.capabilityID)
             data = await interface.addJobRole(req.body)
             let success = "New job role added"
             res.locals.success = success
