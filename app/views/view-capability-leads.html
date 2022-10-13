@@ -7,27 +7,27 @@ Job Specification
 {% block content %}
 
 {{ govukBackLink({
-  text: "Back",
-  href: url+"view-jobRoles"
+text: "Back",
+href: url+"view-jobRoles"
 }) }}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
             Kainos Employee System
-            <span id="jobSpecificationTitle" class="govuk-caption-xl">Job Specification</span>
+            <span id="jobSpecificationTitle" class="govuk-caption-xl"></span>
         </h1>{{releaseVersion | log }}
-        
+
         <table class="govuk-table">
             <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
+            <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Job Role Name</th>
                 <td id="jobRoleName" class="govuk-table__cell">{{ jobRole.roleName }}</td>
-              </tr>
-              <tr class="govuk-table__row">
+            </tr>
+            <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Specification</th>
                 <td id="specTextId" class="govuk-table__cell">{{ jobRole.specification }}</td>
-              </tr>
+            </tr>
             </tbody>
         </table>
         <a href="{{ jobRole.link }}">

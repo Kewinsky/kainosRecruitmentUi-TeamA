@@ -153,3 +153,37 @@ exports.getUserByEmail = async (email) => {
     }
     return("Could not return user")
 }
+
+exports.getGenderBias = async (biasInput) => {
+    
+    try {
+        const genderBias = await axios.post(Url+"gender-bias", {biasInput})
+        console.log(genderBias.data)
+        return genderBias.data;
+    }
+    catch(e) {
+        return new Error("Could not return the gender bias. Please try again.")
+        console.log(e);
+
+    }
+    
+}
+
+exports.createJobWithoutLink = async(id,jobRole) => {
+        try{
+        const response = await axios.put(Url+'editJobRole/'+id, jobRole)
+
+        return response.status
+        }
+        catch(e){
+            if(e.response.status==400){
+                return new Error('Invalid data')
+            }
+            if(e.response.status==500){
+                return new Error('Could not edit employee')
+            }
+            else{
+                return new Error("went wrong")
+            }
+        }
+}
