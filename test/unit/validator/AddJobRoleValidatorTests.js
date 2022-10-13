@@ -91,7 +91,5 @@ describe('AddJobRoleValidator', function() {
                             }
                             expect(function(){AddJobRoleValidator.validateUserInput(role)}).to.throw(Error, "Responsibility is too short")
                         })
-
-
     })
 })
