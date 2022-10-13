@@ -168,6 +168,34 @@ exports.addJobRole = async function (jobRole){
         }
     }
 }
+
+exports.getUserByEmail = async (email) => {
+    try {
+        const viewUser = await axios.get(Url + 'user/' + email)
+        console.log(viewUser.data)
+        return viewUser.data;
+    }
+    catch(e) {
+        console.log(e);
+    }
+    return("Could not return user")
+}
+
+exports.getGenderBias = async (biasInput) => {
+    
+    try {
+        const genderBias = await axios.post(Url+"gender-bias", {biasInput})
+        console.log(genderBias.data)
+        return genderBias.data;
+    }
+    catch(e) {
+        return new Error("Could not return the gender bias. Please try again.")
+        console.log(e);
+
+    }
+    
+}
+
 exports.createJobWithoutLink = async(id,jobRole) => {
         try{
         const response = await axios.put(Url+'editJobRole/'+id, jobRole)
@@ -186,3 +214,4 @@ exports.createJobWithoutLink = async(id,jobRole) => {
             }
         }
     }
+
