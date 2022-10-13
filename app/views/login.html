@@ -29,9 +29,10 @@
             <label class="govuk-label" for="paassword">Password</label>
             <input class="govuk-input govuk-!-width-two-thirds" id="password" type="password" autocomplete="off" required>
           </div>
-            <button id="loginBtn" type="submit" class="govuk-button" data-module="govuk-button">
-              Submit
-            </button>
+
+          <button id="loginBtn" type="submit" class="govuk-button" data-module="govuk-button">
+            Submit
+          </button>
         </fieldset>
       </form>
     </div>
@@ -42,8 +43,6 @@
     const error = document.getElementById("error")
     const errorMsg = document.getElementById("errorMsg")
     const form = document.getElementById("form")
-
-
 
     form.addEventListener("submit", () => {
       const login = {
