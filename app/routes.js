@@ -38,10 +38,6 @@ router.post('/auth', async (req, res) => {
     });
 });
 
-router.get('/profile', auth, (req, res) => {
-    res.json({  email: req.email, password: req.password });
-});
-
 router.get("/logout", auth, (req, res) => {
 return res
     .clearCookie("access_token")

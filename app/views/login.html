@@ -30,7 +30,7 @@
             <input class="govuk-input govuk-!-width-two-thirds" id="password" type="password" autocomplete="off" required>
           </div>
             <button id="loginBtn" type="submit" class="govuk-button" data-module="govuk-button">
-              Login
+              Submit
             </button>
         </fieldset>
       </form>
@@ -42,6 +42,9 @@
     const error = document.getElementById("error")
     const errorMsg = document.getElementById("errorMsg")
     const form = document.getElementById("form")
+
+
+
     form.addEventListener("submit", () => {
       const login = {
         email: email.value,
