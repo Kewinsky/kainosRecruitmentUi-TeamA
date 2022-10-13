@@ -146,8 +146,8 @@ exports.deleteJobRoles = async (idList) => {
 
     try {
         const delJobRoles = await axios.delete(Url + 'delete-job-roles', { data: idList } )
-        console.log(delJobRoles.data)
-        return delJobRoles.data;
+        console.log(delJobRoles)
+        return delJobRoles.status;
 
     }
     catch (e) {

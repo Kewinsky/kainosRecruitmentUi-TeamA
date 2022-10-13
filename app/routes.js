@@ -9,7 +9,6 @@ router.get('/job-specification/:id', async (req, res) => {
         url:Url
     })});
 
-    
 router.get('/view-jobRoles', async (req, res) => {
     var result = await interface.getJobRoles()
     var response = await interface.getBandLevelNames()
@@ -57,9 +56,7 @@ router.get('/view-jobRoles-delete', async (req, res) => {
 
 router.get('/roles-to-delete', async (req, res) => {
     var output = await interface.deleteJobRoles(req.session.data["id"])
-    console.log("--------------------------")
     console.log(req.session.data)
-    console.log("--------------------------")
     res.redirect('/view-jobRoles')
     });
 module.exports = router

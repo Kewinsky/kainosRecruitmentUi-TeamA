@@ -25,14 +25,21 @@ Job Roles – GOV.UK Prototype Kit
           iconFallbackText: "Warning"
         }) }}
 
-        <form class="form" action="/roles-to-delete" method="post">
         {% from "govuk/components/button/macro.njk" import govukButton %}
-            
 
-        <button class="govuk-button govuk-button--warning" data-module="govuk-button">
-            Delete roles
-          </button>
-          
+        <form name="deleteRoles" class="form" method="post" action="javascript:void(0);"> 
+            <button class="govuk-button govuk-button--warning" data-module="govuk-button" onclick="return popupFunction()" >
+                Delete roles
+              </button>
+              <script>
+                function popupFunction(form) {
+                    var result = confirm("Are you sure you want to delete these roles?");
+                    if (result) {
+                        document.deleteRoles.action = "roles-to-delete";
+                    }
+                }
+              </script> 
+
         <table class="govuk-table">
             <tbody class="govuk-table__body">
             <th scope="row" class="govuk-table__header">Delete</th>
