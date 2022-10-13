@@ -145,9 +145,8 @@ exports.getBandLevelNames = async () => {
 exports.addJobRole = async function (jobRole){
     try{
         console.log("I am in the interface")
+        console.log(jobRole)
         const response = await axios.post(Url+'add-job-roles',jobRole)
-        console.log(response)
-        console.log(response.status)
         return response.data
     }catch(e){
         if(e.response === undefined){

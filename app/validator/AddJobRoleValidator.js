@@ -16,8 +16,8 @@ module.exports.validateUserInput = function (role) {
         throw new Error("Role responsibility is too long")
     }
     if (role.link.length > 500) {
-        throw new Error("URL too long")
-    }
+            throw new Error("URL too long")
+        }
     return true
 }
 

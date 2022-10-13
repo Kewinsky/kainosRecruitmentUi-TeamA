@@ -26,26 +26,26 @@ Add a Job Role
         <form class="form" action="/add-job-roles" method="post">
             <div class="govuk-form-group">
                 <h1 class="govuk-label-wrapper">
-                    <label class="govuk-label govuk-label--l" for="roleName">
+                    <label class="govuk-label govuk-label--l" for="roleName" style="padding: 0 0 5px;">
                         Role Name
                     </label>
                 </h1>
                 <input class="govuk-input" id="roleName" name="roleName" value="{{roleName}}" type="text" required>
 
                 <h1 class="govuk-label-wrapper">
-                    <label class="govuk-label govuk-label--l" for="specification">
+                    <label class="govuk-label govuk-label--l" for="specification" style="padding: 30px 0 5px;">
                         Specification
                     </label>
                 </h1>
                 <input class="govuk-input" id="specification" name="specification" value="{{specification}}" type="text" required>
 
                 <h1 class="govuk-label-wrapper">
-                    <label class="govuk-label govuk-label--l" for="link">
+                    <label class="govuk-label govuk-label--l" for="link" style="padding: 30px 0 5px;">
                     Link
                     </label>
                 </h1>
                 <input class="govuk-input" id="link" name="link" value="{{link}}" type="text" required>
-
+                <br><br>
                 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
                 {{ govukRadios({
@@ -124,14 +124,14 @@ Add a Job Role
                 }) }}
 
                 <h1 class="govuk-label-wrapper">
-                    <label class="govuk-label govuk-label--l" for="responsibility">
+                    <label class="govuk-label govuk-label--l" for="responsibility" style="padding: 30px 0 5px;">
                         Responsibility
                     </label>
                 </h1>
                 <input class="govuk-input" id="responsibility" name="responsibility" value="{{responsibility}}" type="text" required>
 
 
-                <br>
+                <br><br><br>
                 <button colour="#009639" id="jobSpecBtn" class="govuk-button" data-module="govuk-button">Create new role</button>
             </div>
         </form>
