@@ -56,7 +56,6 @@
   "devDependencies": {
     "@wdio/local-runner": "^7.19.0",
     "@wdio/mocha-framework": "^7.19.0",
-    "chromedriver": "^105.0.0",
     "glob": "^7.1.4",
     "gulp-webdriver": "^4.0.0",
     "jest": "^25.2.7",
