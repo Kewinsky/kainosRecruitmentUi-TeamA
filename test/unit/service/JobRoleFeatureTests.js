@@ -1,57 +1,66 @@
-var axios = require('axios');
-var MockAdapter = require('axios-mock-adapter');
-var chai = require('chai');
-const expect = chai.expect;
-const interface = require('../../../app/interface');
-const band =  { roleName: 'Principle Architect', bandName: 'principal' }
-const bandName =  { bandName: 'principal' }
-const jobRole = { roleName: 'Principle Architect',specification: "Test Spec", responsibility:"Test responsibility", bandID:1, capabilityID:2}
+var axios = require('axios')
+var MockAdapter = require('axios-mock-adapter')
+var chai = require('chai')
+const expect = chai.expect
+const apiInterface = require('../../../app/apiInterface')
+const band = { roleName: 'Principle Architect', bandName: 'principal' }
+const bandName = { bandName: 'principal' }
+const jobRole = {
+  roleName: 'Principle Architect',
+  specification: 'Test Spec',
+  responsibility: 'Test responsibility',
+  bandID: 1,
+  capabilityID: 2
+}
 URL = '/api/viewBandLevel/'
 URL2 = 'api/editJobRole/'
-const id =58
-describe('interface',function(){
-    describe('edit-job-roles',function(){
-        it('should return success if a job roles is successfully changed', async() =>{
-            var mock = new MockAdapter(axios);
-            const data = [band];
-            mock.onPut(interface.URL2).reply(200, "Data updated successfully");
+const id = 58
 
-            var results = await interface.createJobWithoutLink(58,jobRole);
+/* globals describe, it */
+describe('interface', function () {
+  describe('edit-job-roles', function () {
+    it('should return success if a job roles is successfully changed',
+      async () => {
+        var mock = new MockAdapter(axios)
+        const data = [band]
+        mock.onPut(apiInterface.URL2).reply(200, 'Data updated successfully')
 
-            expect(results).to.deep.equal(200)
+        var results = await apiInterface.createJobWithoutLink(58, jobRole)
 
-        })
+        expect(results).to.deep.equal(200)
+      })
 
-         it('should throw exception when 500 error returned from axios', async () => {
-                var mock = new MockAdapter(axios);
+    it('should throw exception when 500 error returned from axios',
+      async () => {
+        var mock = new MockAdapter(axios)
 
-                mock.onPut(interface.URL2).reply(500);
+        mock.onPut(apiInterface.URL2).reply(500)
 
-                var error = await interface.createJobWithoutLink(58,jobRole);
+        var error = await apiInterface.createJobWithoutLink(58, jobRole)
 
+        expect(error.message).to.equal('Could not edit employee')
+      })
 
-                expect(error.message).to.equal('Could not edit employee')
-              })
+    it('should throw exception when 400 error returned from axios',
+      async () => {
+        var mock = new MockAdapter(axios)
 
-              it('should throw exception when 400 error returned from axios', async () => {
-                              var mock = new MockAdapter(axios);
+        mock.onPut(apiInterface.URL2).reply(400)
 
-                              mock.onPut(interface.URL2).reply(400);
+        var error = await apiInterface.createJobWithoutLink(58, jobRole)
 
-                              var error = await interface.createJobWithoutLink(58,jobRole);
+        expect(error.message).to.equal('Invalid data')
+      })
 
+    it('should throw exception when 500 error returned from axios',
+      async () => {
+        var mock = new MockAdapter(axios)
 
-                              expect(error.message).to.equal('Invalid data')
-              })
+        mock.onPut(apiInterface.URL2).reply(404)
 
-              it('should throw exception when 500 error returned from axios', async () => {
-                   var mock = new MockAdapter(axios);
+        var error = await apiInterface.createJobWithoutLink(58, jobRole)
 
-                    mock.onPut(interface.URL2).reply(404);
-
-                    var error = await interface.createJobWithoutLink(58,jobRole);
-
-                   expect(error.message).to.equal('went wrong')
-              })
-    })
+        expect(error.message).to.equal('went wrong')
+      })
+  })
 })
