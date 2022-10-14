@@ -1,33 +1,35 @@
-var axios = require('axios');
- var MockAdapter = require('axios-mock-adapter');
- var chai = require('chai');
- const expect = chai.expect;
- const interface = require('../../../app/interface');
- const idList = {id: '142'}
- URL = 'api/delete-job-roles/'
- 
- describe('interface', function () {
-     describe('deleteJobRoles', function () {
-       it('should return 200 from response', async () => {
-         var mock = new MockAdapter(axios);
+var axios = require('axios')
+var MockAdapter = require('axios-mock-adapter')
+var chai = require('chai')
+const expect = chai.expect
+const apiInterface = require('../../../app/apiInterface')
+const idList = { id: '142' }
+URL = 'api/delete-job-roles/'
 
-         const data = idList;
+/* globals describe, it */
+describe('interface', function () {
+  describe('deleteJobRoles', function () {
+    it('should return 200 from response', async () => {
+      var mock = new MockAdapter(axios)
 
-         mock.onDelete(interface.URL).reply(200);
+      const data = idList
 
-         var results = await interface.deleteJobRoles(data);
+      mock.onDelete(apiInterface.URL).reply(200)
 
-         expect(results).to.deep.equal(200)
-       })
+      var results = await apiInterface.deleteJobRoles(data)
 
-       it('should throw exception when 500 error returned from axios', async () => {
-         var mock = new MockAdapter(axios);
+      expect(results).to.deep.equal(200)
+    })
 
-         mock.onDelete(interface.URL).reply(500);
+    it('should throw exception when 500 error returned from axios',
+      async () => {
+        var mock = new MockAdapter(axios)
 
-         var error = await interface.deleteJobRoles()
+        mock.onDelete(apiInterface.URL).reply(500)
 
-         expect(error.message).to.equal('Could not delete these Jobs')
-       })
-     })
+        var error = await apiInterface.deleteJobRoles()
+
+        expect(error.message).to.equal('Could not delete these Jobs')
+      })
+  })
 })
