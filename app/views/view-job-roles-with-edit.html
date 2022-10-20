@@ -18,14 +18,11 @@ href: url+"view-jobRoles"
       <span id="jobRolesTitle" class="govuk-caption-xl">Job Roles Report</span>
     </h1>{{releaseVersion | log }}
     <p>Please see below for the list of job Roles</p>
-    {% from "govuk/components/button/macro.njk" import govukButton %}
 
-    {{ govukButton({
-    text: "Stop Editing",
-    href: url+"view-jobRoles",
-    isStartButton: true,
-    id:"Stop-edit"
-    }) }}
+    <a id="stopEditBtn" href="view-jobRoles.html" style="text-decoration: none;">
+      <button class="govuk-button" data-module="govuk-button">Stop editing</button>
+    </a>
+    
     <table class="govuk-table">
       <tbody class="govuk-table__body">
       <th scope="row" class="govuk-table__header" style="padding: 0 50px;">Job Roles</th>
