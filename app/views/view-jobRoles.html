@@ -51,8 +51,8 @@ Job Roles
                   </svg> Delete</button>
             </a>
         </div>
-
-        <table class="table table-striped">
+        
+        <table id="myTable" class="table table-striped">
             <thead>
                 <tr class="table-dark">
                 <th scope="col">Job Role</th>
@@ -97,5 +97,11 @@ Job Roles
         </table>
     </div>
 </div>
+
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+   } );
+</script>
 
 {% endblock %}
