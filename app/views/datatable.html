@@ -1,5 +1,3 @@
-
- 
  <!DOCTYPE html>
  <html>
  <head>
@@ -17,39 +15,157 @@
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
  </head>
- <body>
+ <style>
+    nav a:visited { 
+        text-decoration: none; 
+        color: white; 
+    }
+</style>
 
- <div class="container">
-     <h2>Simple Pagination Example using Datatables Js Library</h2>
-     <table class="table table-fluid table-striped" id="myTable">
-     <thead>
-     <tr><th>Name</th><th>Email</th><th>Password</th></tr>
-     </thead>
-     <tbody>
-     <tr><td>Daniel Danny</td><td>danny.daniel@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Samuel</td><td>samuel@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Jack</td><td>jack@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Eureka</td><td>eureka@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Pinky</td><td>pinky@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Mishti</td><td>mishti@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Puneet</td><td>puneet@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Nick</td><td>nick@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Danika</td><td>danika@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Vishakha</td><td>vishakha@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Nitin</td><td>ni3@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Latika</td><td>latika@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Kaavya</td><td>kaavya@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Ishika</td><td>ishika@gmail.com</td><td>Pass1234</td></tr>
-     <tr><td>Veronika</td><td>veronika@gmail.com</td><td>Pass1234</td></tr>
-     </tbody>
-     </table>
-     
- </div>
- 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a id="navLogo" class="navbar-brand" href="index.html">Kainos Employee System</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a id="navItem-1" class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a id="navItem-2" class="nav-link" href="view-jobRoles.html">Job Roles</a>
+          </li>
+          <li class="nav-item">
+            <a id="navItem-3" class="nav-link" href="predict-gender-bias.html">Prediction</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <form class="d-flex">
+                <a id="loginBtn" href="login.html">
+                    <button type="button" class="btn btn-success">Login</button>
+                </a>
+                <a id="logoutBtn" href="logout.html">
+                    <button type="button" class="btn btn-danger">Logout</button>
+                </a>
+            </form>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+ <body>
+    <style>
+        svg {
+            vertical-align: -0.125em;
+        }
+    </style>
+    <div class="container">
+        <a href="{{ url }}index">
+            <button type="button" class="btn btn-dark my-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                    </svg> Back</button>
+        </a>
+        
+        <h1>Kainos Employee System</h1>
+        <h3>Job Roles Report</h3>
+
+
+        <div class="my-2" style="text-align: end;">
+            <style>
+                .actionBtns{
+                    width: 70px;
+                }
+            </style>
+
+            <a id="addBtn" href="add-new-role.html" style="text-decoration: none;">
+                <button type="button" class="btn btn-success actionBtns me-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg> Add</button>
+            </a>
+
+            <a id="editBtn" href="view-jobRoles-Edit.html" style="text-decoration: none;">
+                <button type="button" class="btn btn-warning actionBtns me-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                    </svg> Edit</button>
+            </a>
+
+            <a id="deleteBtn" href="view-jobRoles-delete.html" style="text-decoration: none;">
+                <button type="button" class="btn btn-danger actionBtns me-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                    </svg> Delete</button>
+            </a>
+        </div>
+        
+        <table id="myTable" class="table table-striped mb-5">
+            <thead>
+                <tr class="table-dark">
+                <th scope="col">Job Role</th>
+                <th scope="col">Band Level</th>
+                <th scope="col">Handle</th>
+                <th scope="col">Responsibility</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobRoles %}
+            <tr>
+                <td>
+                    <p>
+                        <a class="link-dark" href="{{ url }}job-specification/{{ job.jobRoleId }}" id="jobSpecRoleID-{{ job.jobRoleId }}">
+                            {{ job.roleName }}
+                        </a>
+                    </p>
+                </td>
+                {% set bandID = job.bandID %}
+                <td>
+                    <p>
+                        <a class="link-dark" href="{{ url }}view-band-info/{{ job.bandID }}" id="bandID-{{ job.jobRoleId  }}">
+                            {{ bandLevel[bandID-1].bandName }}
+                        </a>
+                    </p>
+                </td>
+                {% set capabilityID = job.capabilityID %}
+                <td>
+                    <p class="gov_role_band" id = "capabilityID-{{ job.jobRoleId }}">
+                        <a class="link-dark" href="{{ url }}view-matrix/{{job.capabilityID}}">
+                            {{ capabilities[capabilityID-1].capabilityName }}</a>
+                    </p>
+                </td>
+                <td>
+                    <p class="gov_role_band" id = "responsibilityID-{{ job.jobRoleId }}">
+                        {{ job.responsibility }}
+                    </p>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="mb-5"></div>
+    
     <script>
-     $(document).ready( function () {
-     $('#myTable').DataTable();
-    } );
-     </script>
+        $(document).ready( function () {
+        $('#myTable').DataTable();
+       } );
+    </script>
+
+<script>
+    const cookie = document.cookie.length;
+    if (cookie > 0) {
+        document.getElementById('loginBtn').style.display = 'none'
+        document.getElementById('logoutBtn').style.display = 'block'
+    }
+    else{
+        document.getElementById('navLogo').href = 'login.html'
+        document.getElementById('navItem-1').href = 'authorization'
+        document.getElementById('navItem-2').href = 'authorization'
+        document.getElementById('navItem-3').href = 'authorization'
+        document.getElementById('loginBtn').style.display = 'block'
+        document.getElementById('logoutBtn').style.display = 'none'
+    }
+</script>
  </body>
+ 
  </html>

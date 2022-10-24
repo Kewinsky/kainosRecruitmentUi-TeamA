@@ -71,6 +71,18 @@ router.get('/view-jobRoles', auth, async (req, res) => {
   })
 })
 
+router.get('/datatable', auth, async (req, res) => {
+  var result = await apiInterface.getJobRoles()
+  var response = await apiInterface.getBandLevelNames()
+  var results = await apiInterface.getCapabilitiesNames()
+  res.render('datatable.html', {
+    jobRoles: result,
+    bandLevel: response,
+    capabilities: results,
+    url: Url
+  })
+})
+
 router.get('/view-jobRoles-Edit', async (req, res) => {
   var result = await apiInterface.getJobRoles()
   var response = await apiInterface.getBandLevelNames()
